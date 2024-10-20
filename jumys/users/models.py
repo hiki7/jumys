@@ -30,12 +30,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     groups = models.ManyToManyField(
         Group,
-        related_name='customuser_set',  # Avoid conflict with auth.User.groups
+        related_name='customuser_set',  
         blank=True,
     )
     user_permissions = models.ManyToManyField(
         Permission,
-        related_name='customuser_permissions',  # Avoid conflict with auth.User.user_permissions
+        related_name='customuser_permissions', 
         blank=True,
     )
 
