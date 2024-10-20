@@ -5,37 +5,37 @@ from django.urls import reverse_lazy
 
 class UserProfileCreateView(CreateView):
     model = UserProfile
-    fields = ['phone', 'links', 'resume', 'abilities']  # Fields to be filled by user
+    fields = ['phone', 'links', 'resume', 'abilities'] 
     template_name = 'userprofile_form.html'
-    success_url = reverse_lazy('userprofile_detail')  # Redirect after successful creation
+    success_url = reverse_lazy('userprofile_detail')  
 
     def form_valid(self, form):
-        form.instance.user = self.request.user  # Bind profile to logged-in user
+        form.instance.user = self.request.user  
         return super().form_valid(form)
 
 
 class UserProfileUpdateView(UpdateView):
     model = UserProfile
-    fields = ['phone', 'links', 'resume', 'abilities']  # Fields that can be updated
+    fields = ['phone', 'links', 'resume', 'abilities']  
     template_name = 'userprofile_form.html'
     success_url = reverse_lazy('userprofile_detail')
 
     def get_object(self, queryset=None):
-        return UserProfile.objects.get(user=self.request.user)  # Get the current user's profile
+        return UserProfile.objects.get(user=self.request.user)  
 
 
 def remove_ability(request, ability_id):
-    user_profile = request.user.profile  # Get the user's profile
+    user_profile = request.user.profile  
     ability = Ability.objects.get(id=ability_id)
-    user_profile.abilities.remove(ability)  # Remove the ability
+    user_profile.abilities.remove(ability)  
     return redirect('userprofile_detail')
 
 
 
 def remove_ability(request, ability_id):
-    user_profile = request.user.profile  # Get the user's profile
+    user_profile = request.user.profile  
     ability = Ability.objects.get(id=ability_id)
-    user_profile.abilities.remove(ability)  # Remove the ability
+    user_profile.abilities.remove(ability)  
     return redirect('userprofile_detail')
 
 
@@ -47,9 +47,9 @@ class AbilityCreateView(CreateView):
     success_url = reverse_lazy('userprofile_detail')
 
     def form_valid(self, form):
-        ability = form.save()  # Save the new ability
+        ability = form.save()  
         user_profile = self.request.user.profile
-        user_profile.abilities.add(ability)  # Add the ability to the user's profile
+        user_profile.abilities.add(ability)  
         return super().form_valid(form)
 
 
@@ -61,7 +61,7 @@ class WorkExperienceCreateView(CreateView):
     success_url = reverse_lazy('userprofile_detail')
 
     def form_valid(self, form):
-        form.instance.user_profile = self.request.user.profile  # Link to user profile
+        form.instance.user_profile = self.request.user.profile  
         return super().form_valid(form)
 
 
