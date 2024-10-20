@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Vacancies</h2> 
+
+    <!-- Blog List -->
+    <div class="list-group">
+        {% for vacan in vacancies %}
+            <div class="list-group-item list-group-item-action">
+                <h4 class="mb-2"><a href="{% url 'blog_detail' blog.pk %}">{{ vacan.position_name }}</a></h4>
+                <!-- <p class="text-muted small fst-italic mb-0">{{ vacan.created_at|date:"F d, Y" }}</p>
+                <p class="mb-1">{{ blog.content|truncatechars:100 }}</p> -->
+            </div>
+        {% empty %}
+            <div class="list-group-item">No vacancies found.</div>
+        {% endfor %}
+    </div>  
+
+    <!-- Pagination -->
+    <nav aria-label="Blog Pagination" class="my-4">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="First">
+                        <span aria-hidden="true">&laquo;&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for i in page_obj.paginator.page_range %}
+                <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
+                        <span aria-hidden="true">&raquo;&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endblock %}
