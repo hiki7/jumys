@@ -57,7 +57,7 @@ class HomePageView(ListView):
     model = Vacancy
     template_name = 'index.html'
     context_object_name = 'vacancies'
-    paginate_by = 5
+    paginate_by = 3
 
     def get_queryset(self):
         search_query = self.request.GET.get('search')

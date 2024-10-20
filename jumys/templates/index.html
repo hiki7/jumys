@@ -8,7 +8,7 @@
     <div class="list-group">
         {% for vacan in vacancies %}
             <div class="list-group-item list-group-item-action">
-                <h4 class="mb-2"><a href="{% url 'blog_detail' blog.pk %}">{{ vacan.position_name }}</a></h4>
+                <h4 class="mb-2">{{ vacan.position_name.name }}</a></h4>
                 <!-- <p class="text-muted small fst-italic mb-0">{{ vacan.created_at|date:"F d, Y" }}</p>
                 <p class="mb-1">{{ blog.content|truncatechars:100 }}</p> -->
             </div>
