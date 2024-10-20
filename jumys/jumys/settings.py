@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-from .env_variables import DB_POSTGRES_USER, DB_POSTGRES_HOST, DB_POSTGRES_PORT, DB_POSTGRES_NAME, DB_POSTGRES_PASSWORD
 from pathlib import Path
 from datetime import timedelta
 
@@ -77,12 +76,8 @@ WSGI_APPLICATION = 'jumys.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": f"{DB_POSTGRES_NAME}",
-        "USER": f"{DB_POSTGRES_USER}",
-        "PASSWORD": f"{DB_POSTGRES_PASSWORD}",
-        "HOST": f"{DB_POSTGRES_HOST}",
-        "PORT": f"{DB_POSTGRES_PORT}",
+        "ENGINE": "django.db.backends.sqlite3",
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
