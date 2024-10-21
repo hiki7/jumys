@@ -5,14 +5,14 @@ from users.models import CustomUser
 from vacancies.models import Vacancy, Company, Position
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(CustomUser, on_delete=models.SET_NULL, related_name='profile')
     phone = models.CharField(max_length=15, blank=True, null=True)  
     links = models.TextField(blank=True, null=True)  
     resume = models.FileField(upload_to='resumes/', blank=True, null=True) 
     abilities = models.ManyToManyField('Ability', blank=True, related_name='users')  
     bookmarked_vacancies = models.ManyToManyField(Vacancy, blank=True, related_name='bookmarked_by')
     applied_vacancies = models.ManyToManyField('Application', blank=True, related_name='applicants')
-
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     def __str__(self):
         return self.user.email
 

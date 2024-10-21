@@ -1,8 +1,10 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.conf import settings
+
+from users.models import CustomUser
 
 CURRENCY = [("KZT", "₸"), ("RUB", "₽"), ("EUR", "€"), ("USD", "$")]
-
 class Vacancy(models.Model):
     position_name = models.ForeignKey('Position', on_delete=models.CASCADE)
     salary_start = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
@@ -43,9 +45,8 @@ class Technology(models.Model):
 class Position(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
-# Hidden Companies (Main app - vacancies)
 class HiddenCompanies(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
 
     class Meta:
@@ -55,9 +56,8 @@ class HiddenCompanies(models.Model):
     def __str__(self):
         return f"{self.user.username} hides {self.company.name}"
 
-# Hidden Vacancies (Main app - vacancies)
 class HiddenVacancies(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     vacancy = models.ForeignKey(Vacancy, on_delete=models.CASCADE)
 
     class Meta:
