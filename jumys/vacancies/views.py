@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 
 from .models import Vacancy, HiddenVacancies, Company
+from users.mixins import ManagerRequiredMixin
 
 class VacancyListView(ListView):
     model = Vacancy
@@ -19,19 +20,19 @@ class VacancyDetailView(DetailView):
     template_name = 'vacancies/vacancy_detail.html'
     context_object_name = 'vacancy'
 
-class VacancyCreateView(CreateView):
+class VacancyCreateView(CreateView,ManagerRequiredMixin):
     model = Vacancy
     fields = ['position_name', 'salary_start', 'salary_end', 'currency', 'company', 'location', 'employment_type', 'technology', 'is_active']
     template_name = 'vacancies/vacancy_form.html'
     success_url = reverse_lazy('vacancy_list')
 
-class VacancyUpdateView(UpdateView):
+class VacancyUpdateView(UpdateView,ManagerRequiredMixin):
     model = Vacancy
     fields = ['position_name', 'salary_start', 'salary_end', 'currency', 'company', 'location', 'employment_type', 'technology', 'is_active']
     template_name = 'vacancies/vacancy_form.html'
     success_url = reverse_lazy('vacancy_list')
 
-class VacancyDeleteView(DeleteView):
+class VacancyDeleteView(DeleteView,ManagerRequiredMixin):
     model = Vacancy
     template_name = 'vacancies/vacancy_confirm_delete.html'
     success_url = reverse_lazy('vacancy_list')

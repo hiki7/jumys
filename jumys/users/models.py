@@ -26,12 +26,14 @@ class CustomUserManager(BaseUserManager):
             return f"User with email {email} was deleted successfully."
         except CustomUser.DoesNotExist:
             return f"User with email {email} does not exist."
+        
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
+    is_manager = models.BooleanField(default=False)  # Add this field
     date_joined = models.DateTimeField(default=timezone.now)
 
     groups = models.ManyToManyField(
@@ -50,11 +52,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
-    def delete(self, *args, **kwargs):
-        super().delete(*args, **kwargs)
-        return f"User {self.email} deleted successfully."
-
     def __str__(self):
         return self.email
+
 
 
