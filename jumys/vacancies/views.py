@@ -6,7 +6,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from django.db.models import Q
 
-from .models import Vacancy, HiddenVacancies, Company
+from .models import Vacancy, Company
 
 class VacancyListView(ListView):
     model = Vacancy
@@ -36,16 +36,16 @@ class VacancyDeleteView(DeleteView):
     template_name = 'vacancies/vacancy_confirm_delete.html'
     success_url = reverse_lazy('vacancy_list')
 
-@login_required
-def hide_vacancy(request, pk):
-    vacancy = get_object_or_404(Vacancy, pk=pk)
-    HiddenVacancies.objects.create(user=request.user, vacancy=vacancy)
-    return redirect('vacancy_list')
+# @login_required
+# def hide_vacancy(request, pk):
+#     vacancy = get_object_or_404(Vacancy, pk=pk)
+#     HiddenVacancies.objects.create(user=request.user, vacancy=vacancy)
+#     return redirect('vacancy_list')
 
-@login_required
-def hidden_vacancies(request):
-    hidden_vacancies = HiddenVacancies.objects.filter(user=request.user)
-    return render(request, 'vacancies/hidden_vacancies.html', {'hidden_vacancies': hidden_vacancies})
+# @login_required
+# def hidden_vacancies(request):
+#     hidden_vacancies = HiddenVacancies.objects.filter(user=request.user)
+#     return render(request, 'vacancies/hidden_vacancies.html', {'hidden_vacancies': hidden_vacancies})
 
 class CompanyListView(ListView):
     model = Company
