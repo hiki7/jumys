@@ -36,12 +36,12 @@ class CustomLogoutView(LogoutView):
 #  Function Based views
 
 @login_required
-def ViewUser(request):
+def view_user_view(request):
     user = request.user  
     return render(request, 'auth/user_profile.html', {'user': user})
 
 @login_required
-def UpdateUser(request):
+def update_user_view(request):
     user = request.user  
     if request.method == 'POST':
         form = CustomUserChangeForm(request.POST, instance=user)
@@ -57,7 +57,7 @@ def UpdateUser(request):
     return render(request, 'auth/user_update.html', {'form': form})
 
 @login_required
-def DeleteUser(request):
+def delete_user_view(request):
     user = request.user  
     if request.method == 'POST':
         user.delete()
