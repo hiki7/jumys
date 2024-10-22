@@ -52,9 +52,11 @@
               </form>
               {% endblock %}
               {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="btn btn-light me-2" href="{% url 'vacancy_create' %}">Create Vacancy</a>
-                </li>
+                  {% if user.is_staff %}
+                    <li class="nav-item">
+                        <a class="btn btn-light me-2" href="{% url 'vacancy_create' %}">Create Vacancy</a>
+                    </li>
+                  {% endif %}
                 <li class="nav-item">
                     <form action="{% url 'logout' %}" method="POST" class="d-inline">
                         {% csrf_token %}

@@ -59,7 +59,7 @@
                 <a href="#" class="btn btn-outline-secondary me-2">Save</a>
 
                 <!-- Update and Delete Buttons (Visible only to logged-in users) -->
-                {% if user.is_authenticated %}
+                {% if user.is_staff %}
                     <a href="{% url 'vacancy_update' vacancy.pk %}" class="btn btn-warning me-2">Update</a>
                     <a href="{% url 'vacancy_delete' vacancy.pk %}" class="btn btn-danger"
                        onclick="return confirm('Are you sure you want to delete this vacancy?');">Delete</a>
