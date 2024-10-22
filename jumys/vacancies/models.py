@@ -44,25 +44,25 @@ class Position(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
 # Hidden Companies (Main app - vacancies)
-class HiddenCompanies(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+# class HiddenCompanies(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     company = models.ForeignKey(Company, on_delete=models.CASCADE)
 
-    class Meta:
-        verbose_name_plural = "Hidden Companies"
-        verbose_name = "Hidden Company"
+#     class Meta:
+#         verbose_name_plural = "Hidden Companies"
+#         verbose_name = "Hidden Company"
 
-    def __str__(self):
-        return f"{self.user.username} hides {self.company.name}"
+#     def __str__(self):
+#         return f"{self.user.username} hides {self.company.name}"
 
-# Hidden Vacancies (Main app - vacancies)
-class HiddenVacancies(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    vacancy = models.ForeignKey(Vacancy, on_delete=models.CASCADE)
+# # Hidden Vacancies (Main app - vacancies)
+# class HiddenVacancies(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     vacancy = models.ForeignKey(Vacancy, on_delete=models.CASCADE)
 
-    class Meta:
-        verbose_name_plural = "Hidden Vacancies"
-        verbose_name = "Hidden Vacancy"
+#     class Meta:
+#         verbose_name_plural = "Hidden Vacancies"
+#         verbose_name = "Hidden Vacancy"
 
-    def __str__(self):
-        return f"{self.user.username} hides {self.vacancy.position_name}"
+#     def __str__(self):
+#         return f"{self.user.username} hides {self.vacancy.position_name}"

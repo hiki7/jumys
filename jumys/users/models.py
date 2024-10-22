@@ -19,23 +19,31 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_active', True)
 
         return self.create_user(email, password, **extra_fields)
-
+    def delete_user(self, email):
+        try:
+            user = self.get(email=email)
+            user.delete()
+            return f"User with email {email} was deleted successfully."
+        except CustomUser.DoesNotExist:
+            return f"User with email {email} does not exist."
+        
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
+    is_manager = models.BooleanField(default=False)  # Add this field
     date_joined = models.DateTimeField(default=timezone.now)
 
     groups = models.ManyToManyField(
         Group,
-        related_name='customuser_set',  # Avoid conflict with auth.User.groups
+        related_name='customuser_set',
         blank=True,
     )
     user_permissions = models.ManyToManyField(
         Permission,
-        related_name='customuser_permissions',  # Avoid conflict with auth.User.user_permissions
+        related_name='customuser_permissions',
         blank=True,
     )
 
@@ -46,3 +54,5 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+
