@@ -19,29 +19,53 @@ class Company(models.Model):
     company_description = models.TextField()
     location = models.ForeignKey('Location', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 class Location(models.Model):
     country = models.ForeignKey('Country', on_delete=models.CASCADE)
     city = models.ForeignKey('City', on_delete=models.CASCADE, null=True, blank=True)
     street = models.ForeignKey('Street', on_delete=models.CASCADE, null=True, blank=True)
 
+    def __str__(self):
+        return f"{self.city}, {self.country}, {self.street}"
+
 class Country(models.Model):
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 class City(models.Model):
     name = models.CharField(max_length=255)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 class Street(models.Model):
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 class EmploymentType(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
+    def __str__(self):
+        return self.name
+
 class Technology(models.Model):
     technology_name = models.CharField(max_length=255, unique=True)
 
+    def __str__(self):
+        return self.technology_name
+
 class Position(models.Model):
     name = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.name
 
 # Hidden Companies (Main app - vacancies)
 # class HiddenCompanies(models.Model):

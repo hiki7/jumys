@@ -4,13 +4,52 @@
 <div class="container mt-4">
     <h2 class="mb-4">Vacancies</h2> 
 
-    <!-- Blog List -->
+    <!-- Vacancies List -->
     <div class="list-group">
         {% for vacan in vacancies %}
             <div class="list-group-item list-group-item-action">
-                <h4 class="mb-2"><a href="{% url 'blog_detail' blog.pk %}">{{ vacan.position_name }}</a></h4>
-                <!-- <p class="text-muted small fst-italic mb-0">{{ vacan.created_at|date:"F d, Y" }}</p>
-                <p class="mb-1">{{ blog.content|truncatechars:100 }}</p> -->
+                <a href="{% url 'vacancy_detail' vacan.pk %}" class="h5">{{ vacan.position_name.name }}</a>
+                
+                <!-- Vacancy Details -->
+                <p class="mb-1">
+                    <strong>Company:</strong> {{ vacan.company.name }}<br>
+                    <strong>Location:</strong> 
+                    {% if vacan.location.city %}
+                        {{ vacan.location.city.name }},
+                    {% endif %}
+                    {{ vacan.location.country.name }}
+                </p>
+                
+                <!-- Salary Info -->
+                <p class="mb-1">
+                    <strong>Salary:</strong>
+                    {% if vacan.salary_start or vacan.salary_end %}
+                        {{ vacan.salary_start|default:"N/A" }} - {{ vacan.salary_end|default:"N/A" }}
+                        {{ vacan.get_currency_display }}
+                    {% else %}
+                        Not disclosed
+                    {% endif %}
+                </p>
+
+                <!-- Employment Types -->
+                <p class="mb-1">
+                    <strong>Employment Type:</strong> 
+                    {% for emp_type in vacan.employment_type.all %}
+                        <span class="badge bg-secondary">{{ emp_type.name }}</span>
+                    {% empty %}
+                        <span class="text-muted">Not specified</span>
+                    {% endfor %}
+                </p>
+
+                <!-- Technologies -->
+                <p class="mb-1">
+                    <strong>Technologies:</strong>
+                    {% for tech in vacan.technology.all %}
+                        <span class="badge bg-info text-white">{{ tech.technology_name }}</span>
+                    {% empty %}
+                        <span class="text-muted">No technologies required</span>
+                    {% endfor %}
+                </p>
             </div>
         {% empty %}
             <div class="list-group-item">No vacancies found.</div>
@@ -18,7 +57,7 @@
     </div>  
 
     <!-- Pagination -->
-    <nav aria-label="Blog Pagination" class="my-4">
+    <nav aria-label="Vacancy Pagination" class="my-4">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
                 <li class="page-item">
