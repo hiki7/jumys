@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #libraries
-    'bootstrap5',
     'rest_framework',
     'crispy_forms',
     'crispy_bootstrap4',

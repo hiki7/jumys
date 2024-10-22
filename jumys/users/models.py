@@ -30,7 +30,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
-    is_manager = models.BooleanField(default=False)  # Add this field
+    is_staff = models.BooleanField(default=False)  # Add this field
     date_joined = models.DateTimeField(default=timezone.now)
     groups = models.ManyToManyField(
         Group,
