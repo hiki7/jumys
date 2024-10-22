@@ -20,7 +20,7 @@ class VacancyListView(ListView):
 
 class VacancyDetailView(DetailView):
     model = Vacancy
-    template_name = 'vacancy_detail.html'
+    template_name = 'vacancies/vacancy_detail.html'
     context_object_name = 'vacancy'
 
     def get_context_data(self, **kwargs):
@@ -69,7 +69,7 @@ class VacancyUpdateView(UpdateView, LoginRequiredMixin):
 
 class VacancyDeleteView(DeleteView):
     model = Vacancy
-    template_name = 'vacancy_delete.html'
+    template_name = 'vacancies/vacancy_delete.html'
     success_url = reverse_lazy('home')
 
 class CompanyListView(ListView):
@@ -80,7 +80,7 @@ class CompanyListView(ListView):
 
 class HomePageView(ListView):
     model = Vacancy
-    template_name = 'index.html'
+    template_name = 'vacancies/index.html'
     context_object_name = 'vacancies'
     paginate_by = 3
 
