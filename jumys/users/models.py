@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, Group, Permission
 from django.utils import timezone
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -13,11 +14,10 @@ class CustomUserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_manager', True)
         extra_fields.setdefault('is_superuser', True)
-        extra_fields.setdefault('is_active', True)
-
         return self.create_user(email, password, **extra_fields)
+
     def delete_user(self, email):
         try:
             user = self.get(email=email)
@@ -30,8 +30,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
-    is_active = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
     is_manager = models.BooleanField(default=False)  # Add this field
     date_joined = models.DateTimeField(default=timezone.now)
     groups = models.ManyToManyField(
@@ -50,5 +48,4 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
-
 

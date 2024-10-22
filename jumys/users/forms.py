@@ -15,6 +15,12 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class CustomUserChangeForm(UserChangeForm):
-    class Meta:
+    class Meta: 
         model = CustomUser
-        fields = ['email', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_manager']
+        fields = ['email', 'first_name', 'last_name']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Remove the password field entirely
+        if 'password' in self.fields:
+            self.fields.pop('password')

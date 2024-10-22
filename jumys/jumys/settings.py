@@ -44,10 +44,11 @@ INSTALLED_APPS = [
     'bootstrap5',
     'rest_framework',
     'crispy_forms',
-
+    'crispy_bootstrap4',
     #apps
     'vacancies',
     'users',
+    'user_profile'
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.CustomUser'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

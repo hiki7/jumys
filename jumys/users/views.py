@@ -1,12 +1,13 @@
+from django.contrib import messages  # Correct import for messages
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import CustomUser
-from django.contrib.auth.views import LoginView,LogoutView
+from django.contrib.auth.views import LoginView, LogoutView
 
 class RegisterView(CreateView):
     form_class = CustomUserCreationForm
@@ -31,30 +32,36 @@ class CustomLoginView(LoginView):
     
 class CustomLogoutView(LogoutView):
     next_page = reverse_lazy('home') 
+
+#  Function Based views
+
+@login_required
+def ViewUser(request):
+    user = request.user  
+    return render(request, 'auth/user_profile.html', {'user': user})
+
+@login_required
+def UpdateUser(request):
+    user = request.user  
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your profile has been updated successfully.')
+            return redirect('user_profile')  
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = CustomUserChangeForm(instance=user)
     
-class ProfileUpdateView(LoginRequiredMixin, UpdateView):
-    model = CustomUser
-    form_class = CustomUserChangeForm
-    template_name = 'registration/profile_update.html'
-    
-    def get_success_url(self):
-        return reverse_lazy('profile_detail', kwargs={'pk': self.request.user.pk})  # Redirect to profile detail after update
+    return render(request, 'auth/user_update.html', {'form': form})
 
-    def get_object(self):
-        return self.request.user  
-
-class ProfileDeleteView(LoginRequiredMixin, DeleteView):
-    model = CustomUser
-    success_url = reverse_lazy('login')
-
-    def get_object(self):
-        return self.request.user
-
-    def post(self, request, *args, **kwargs):
-        # Get the user object
-        user = self.get_object()
-
-        user.profile.delete()  
- 
+@login_required
+def DeleteUser(request):
+    user = request.user  
+    if request.method == 'POST':
         user.delete()
-        return redirect(self.success_url)
+        logout(request)  
+        messages.success(request, 'Your account has been deleted successfully.')
+        return redirect('home')  
+    return render(request, 'auth/user_delete.html')
