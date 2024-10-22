@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Hidden Vacancies{% endblock %}
+
+{% block content %}
+<h2>Hidden Vacancies</h2>
+<ul>
+    {% for hidden in hidden_vacancies %}
+    <li>{{ hidden.vacancy.position_name.name }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'vacancy_list' %}" class="btn btn-secondary">Back to Vacancies</a>
+{% endblock %}

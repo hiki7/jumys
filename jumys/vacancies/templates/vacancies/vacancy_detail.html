@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Vacancy Detail{% endblock %}
+
+{% block content %}
+<h2>{{ vacancy.position_name.name }}</h2>
+<p><strong>Salary:</strong> {{ vacancy.salary_start }} - {{ vacancy.salary_end }} {{ vacancy.currency }}</p>
+<p><strong>Company:</strong> {{ vacancy.company.name }}</p>
+<p><strong>Location:</strong> {{ vacancy.location.city.name }}, {{ vacancy.location.street.name }}</p>
+
+<a href="{% url 'vacancy_update' vacancy.pk %}" class="btn btn-sm btn-secondary">Edit</a>
+<a href="{% url 'vacancy_delete' vacancy.pk %}" class="btn btn-sm btn-danger">Delete</a>
+{% endblock %}

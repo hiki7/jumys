@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Create/Edit Vacancy{% endblock %}
+
+{% block content %}
+<h2>{{ form.instance.pk|default:"Create New" }} Vacancy</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<a href="{% url 'vacancy_list' %}" class="btn btn-secondary mt-2">Back to List</a>
+{% endblock %}
