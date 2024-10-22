@@ -90,12 +90,12 @@ class HomePageView(ListView):
 
         if search_query:
             queryset = queryset.filter(
-                Q(position_name__title__icontains=search_query) |  
+                Q(position_name__name__icontains=search_query) |  
                 Q(salary_start__icontains=search_query) |  
                 Q(company__name__icontains=search_query) |  
-                Q(location__name__icontains=search_query) |  
+                Q(location__city__name__icontains=search_query) |  
                 Q(employment_type__name__icontains=search_query) |  
-                Q(technology__name__icontains=search_query)  
+                Q(technology__technology_name__icontains=search_query) 
             )
 
         return queryset.order_by('-salary_start') 
