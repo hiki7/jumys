@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, Group, Permission
 from django.utils import timezone
-
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -35,7 +34,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_manager = models.BooleanField(default=False)  # Add this field
     date_joined = models.DateTimeField(default=timezone.now)
-
     groups = models.ManyToManyField(
         Group,
         related_name='customuser_set',
@@ -46,9 +44,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         related_name='customuser_permissions',
         blank=True,
     )
-
     objects = CustomUserManager()
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
 

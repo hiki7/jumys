@@ -45,7 +45,6 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
 class ProfileDeleteView(LoginRequiredMixin, DeleteView):
     model = CustomUser
-    template_name = 'registration/profile_confirm_delete.html'
     success_url = reverse_lazy('login')
 
     def get_object(self):
@@ -55,12 +54,7 @@ class ProfileDeleteView(LoginRequiredMixin, DeleteView):
         # Get the user object
         user = self.get_object()
 
-        # Delete related objects manually (if needed)
-        user.profile.delete()  # If UserProfile exists
-        user.hiddencompanies_set.all().delete()  # If there are HiddenCompanies
-        user.hiddenvacancies_set.all().delete()  # If there are HiddenVacancies
-        # Add other deletions as necessary
-
-        # Finally, delete the user
+        user.profile.delete()  
+ 
         user.delete()
         return redirect(self.success_url)
