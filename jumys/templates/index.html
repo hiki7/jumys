@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Vacancies</h2> 
+
+    <!-- Vacancies List -->
+    <div class="list-group">
+        {% for vacan in vacancies %}
+            <div class="list-group-item list-group-item-action">
+                <a href="{% url 'vacancy_detail' vacan.pk %}" class="h5">{{ vacan.position_name.name }}</a>
+                
+                <!-- Vacancy Details -->
+                <p class="mb-1">
+                    <strong>Company:</strong> {{ vacan.company.name }}<br>
+                    <strong>Location:</strong> 
+                    {% if vacan.location.city %}
+                        {{ vacan.location.city.name }},
+                    {% endif %}
+                    {{ vacan.location.country.name }}
+                </p>
+                
+                <!-- Salary Info -->
+                <p class="mb-1">
+                    <strong>Salary:</strong>
+                    {% if vacan.salary_start or vacan.salary_end %}
+                        {{ vacan.salary_start|default:"N/A" }} - {{ vacan.salary_end|default:"N/A" }}
+                        {{ vacan.get_currency_display }}
+                    {% else %}
+                        Not disclosed
+                    {% endif %}
+                </p>
+
+                <!-- Employment Types -->
+                <p class="mb-1">
+                    <strong>Employment Type:</strong> 
+                    {% for emp_type in vacan.employment_type.all %}
+                        <span class="badge bg-secondary">{{ emp_type.name }}</span>
+                    {% empty %}
+                        <span class="text-muted">Not specified</span>
+                    {% endfor %}
+                </p>
+
+                <!-- Technologies -->
+                <p class="mb-1">
+                    <strong>Technologies:</strong>
+                    {% for tech in vacan.technology.all %}
+                        <span class="badge bg-info text-white">{{ tech.technology_name }}</span>
+                    {% empty %}
+                        <span class="text-muted">No technologies required</span>
+                    {% endfor %}
+                </p>
+            </div>
+        {% empty %}
+            <div class="list-group-item">No vacancies found.</div>
+        {% endfor %}
+    </div>  
+
+    <!-- Pagination -->
+    <nav aria-label="Vacancy Pagination" class="my-4">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="First">
+                        <span aria-hidden="true">&laquo;&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for i in page_obj.paginator.page_range %}
+                <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
+                        <span aria-hidden="true">&raquo;&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endblock %}

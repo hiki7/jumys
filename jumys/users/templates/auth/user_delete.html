@@ -1,0 +1,13 @@
+<!-- templates/auth/delete_confirm.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Confirm Account Deletion</h2>
+  <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, delete my account</button>
+    <a href="{% url 'user_profile' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock %}
