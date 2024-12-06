@@ -13,8 +13,18 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ('id', 'username', 'email', 'role', 'password')
-        extra_kwargs = {'password': {'write_only': True}}
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'role': {'required': True},  # Make role mandatory
+        }
+
+    def validate_role(self, value):
+        # Block the "admin" role from being set at registration
+        if value == 'admin':
+            raise serializers.ValidationError("You cannot assign the 'admin' role.")
+        return value
 
     def create(self, validated_data):
+        # Create user with validated data
         user = CustomUser.objects.create_user(**validated_data)
         return user

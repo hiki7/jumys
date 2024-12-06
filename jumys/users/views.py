@@ -5,6 +5,7 @@ from .models import CustomUser
 from .serializers import CustomTokenObtainPairSerializer, UserSerializer
 from drf_spectacular.utils import extend_schema, OpenApiParameter
 from drf_spectacular.types import OpenApiTypes
+from rest_framework.exceptions import ValidationError
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
@@ -32,25 +33,28 @@ class CustomTokenObtainPairView(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
         return super().post(request, *args, **kwargs)
 
+
 class RegisterView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
 
     @extend_schema(
-        description="Register a new user",
+        description="Register a new user with role selection (HR or Seeker)",
         request=UserSerializer,
-        responses={201: UserSerializer,  
+        responses={
+            201: UserSerializer,
             400: {
                 "description": "Validation Error", 
                 "content": {
                     "application/json": {
                         "example": {
-                            "detail": "Username already exists" 
+                            "detail": "Invalid role or username already exists"
                         }
                     }
                 }
-            }},
+            }
+        },
         parameters=[
             OpenApiParameter(
                 name="email",
@@ -70,7 +74,16 @@ class RegisterView(generics.CreateAPIView):
                 location="form",
                 description="Password for the new user"
             ),
+            OpenApiParameter(
+                name="role",
+                type=OpenApiTypes.STR,
+                location="form",
+                description="Role of the new user: 'seeker' or 'hr'"
+            ),
         ]
     )
     def post(self, request, *args, **kwargs):
+        role = request.data.get('role')
+        if role not in ['seeker', 'hr']:
+            raise ValidationError({'role': 'Role must be either "seeker" or "hr"'})
         return super().post(request, *args, **kwargs)
