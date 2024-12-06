@@ -46,6 +46,12 @@ INSTALLED_APPS = [
     'drf_spectacular',
     ####
     
+    'users',
+    'companies',
+    'seekers',
+    'vacancies',
+    'follows',
+    'analytics'
 
 ]
 
@@ -198,8 +204,8 @@ SPECTACULAR_SETTINGS = {
 
 
 
-CELERY_BROKER_URL = 'redis://localhost:6380/0'  # Example using Redis
-CELERY_RESULT_BACKEND = 'redis://localhost:6380/1'  # Example result backend
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Example using Redis
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'  # Example result backend
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TASK_ALWAYS_EAGER = True
@@ -211,7 +217,7 @@ CELERY_TASK_ALWAYS_EAGER = True
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6380/1",
+        "LOCATION": "redis://127.0.0.1:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
@@ -257,3 +263,11 @@ LOGGING = {
         },
     },
 }
+
+
+AUTH_USER_MODEL = 'users.CustomUser'
+####
+####
+####
+####
+####
