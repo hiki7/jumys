@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+<h2 class="mb-4">Profile</h2>
+<div class="card p-3 mb-3">
+    <h4>{{ user.username }}</h4>
+    <p>Email: {{ user.email }}</p>
+    <p>Role: {{ user.role }}</p>
+</div>
+
+<!-- If you have a user profile model, you can show more info here -->
+{% if user.profile %}
+<div class="card p-3">
+    <h5>Additional Information:</h5>
+    <p>Phone: {{ user.profile.phone }}</p>
+    <p>Links: {{ user.profile.links }}</p>
+    {% if user.profile.resume %}
+        <p><a href="{{ user.profile.resume.url }}" target="_blank">View Resume</a></p>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock content %}

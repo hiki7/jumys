@@ -51,9 +51,11 @@ INSTALLED_APPS = [
     'seekers',
     'vacancies',
     'follows',
-    'analytics'
+    'analytics',
+    'core'
 
 ]
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,7 +72,7 @@ ROOT_URLCONF = 'jumys.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'core/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

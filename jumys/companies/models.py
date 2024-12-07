@@ -29,15 +29,15 @@ class Location(models.Model):
         return f"{self.city}, {self.country}, {self.street}"
 
 
-# class Location(models.Model):
-#     country = models.ForeignKey('Country', on_delete=models.CASCADE)
-#     city = models.ForeignKey('City', on_delete=models.CASCADE, null=True, blank=True)
-#     street = models.ForeignKey('Street', on_delete=models.CASCADE, null=True, blank=True)
-#     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-#     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+class Location(models.Model):
+    country = models.ForeignKey('Country', on_delete=models.CASCADE)
+    city = models.ForeignKey('City', on_delete=models.CASCADE, null=True, blank=True)
+    street = models.ForeignKey('Street', on_delete=models.CASCADE, null=True, blank=True)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
 
-#     def __str__(self):
-#         return f"{self.city}, {self.country}, {self.street}"
+    def __str__(self):
+        return f"{self.city}, {self.country}, {self.street}"
 
 
 
