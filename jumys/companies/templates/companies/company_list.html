@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Companies</title>
+</head>
+<body>
+    <h1>All Companies</h1>
+
+    <a href="{% url 'company_create' %}">Create a New Company</a>
+
+    <ul>
+        {% for company in companies %}
+            <li>
+                <a href="{% url 'company_detail' company.id %}">{{ company.name }}</a> 
+                - {{ company.company_description }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

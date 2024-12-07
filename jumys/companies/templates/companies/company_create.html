@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Company</title>
+</head>
+<body>
+    <h1>Create a New Company</h1>
+
+    <form action="/api/companies/create/" method="post">
+        {% csrf_token %}
+        
+        <label for="name">Company Name</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="company_description">Description</label>
+        <textarea name="company_description" id="company_description" required></textarea>
+
+        <label for="location">Location</label>
+        <select name="location" id="location" required>
+            {% for location in locations %}
+                <option value="{{ location.id }}">{{ location }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Create Company</button>
+    </form>
+
+    <a href="{% url 'company_list' %}">Back to List</a>
+</body>
+</html>

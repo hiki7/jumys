@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Managers</title>
+</head>
+<body>
+    <h1>Manage Managers for {{ company.name }}</h1>
+
+    <form action="{% url 'manage_managers' company.id %}" method="post">
+        {% csrf_token %}
+        
+        <h2>All Users</h2>
+        <ul>
+            {% for user in all_users %}
+                <li>
+                    <input type="checkbox" name="managers" value="{{ user.id }}" 
+                        {% if user.id in company.managers.all.values_list 'id', flat=True) %} checked {% endif %}
+                    >
+                    {{ user.username }}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <button type="submit">Update Managers</button>
+    </form>
+
+    <a href="{% url 'company_detail' company.id %}">Back to Company Details</a>
+</body>
+</html>
