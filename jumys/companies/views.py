@@ -5,13 +5,9 @@ from .permissions import IsManagerOrAdmin
 from users.serializers import UserSerializer
 from users.models import CustomUser
 from rest_framework.response import Response
+from django.views import View
+from companies.models import Company, Location, Country, City, Street
 
-class CompanyCreateView(generics.CreateAPIView):
-    serializer_class = CompanySerializer
-    permission_classes = [permissions.IsAuthenticated, IsManagerOrAdmin]
-
-    def perform_create(self, serializer):
-        serializer.save(head_manager=self.request.user)
 
 class AddManagerToCompanyView(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated, IsManagerOrAdmin]
