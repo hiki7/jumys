@@ -1,5 +1,7 @@
 from rest_framework import generics, permissions, status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from .models import Follow, Connection, ReferenceLetter
 from .serializers import FollowSerializer, ConnectionSerializer, ReferenceLetterSerializer
@@ -90,3 +92,21 @@ class ReferenceLetterListView(generics.ListAPIView):
 
     def get_queryset(self):
         return ReferenceLetter.objects.filter(recipient=self.request.user)
+
+
+class RequestReferenceView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, user_id):
+        recipient = get_object_or_404(CustomUser, id=user_id)
+        if recipient == request.user:
+            return Response({'detail': 'You cannot request a reference from yourself.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        reference, created = ReferenceLetter.objects.get_or_create(
+            author=request.user, recipient=recipient, status='pending'
+        )
+        if not created:
+            return Response({'detail': 'A reference request is already pending.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = ReferenceLetterSerializer(reference)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
