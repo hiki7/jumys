@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import generics, permissions, status
 from .models import UserProfile, Application, Ability, WorkExperience
 from .serializers import UserProfileSerializer, ApplicationSerializer, AbilitySerializer, WorkExperienceSerializer
@@ -59,6 +60,15 @@ class UserAbilitiesView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save()
+
+
+class RemoveAbilityView(generics.DestroyAPIView):
+    serializer_class = AbilitySerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        ability_id = self.kwargs['ability_id']
+        return get_object_or_404(self.request.user.profile.abilities, id=ability_id)
 
 
 class WorkExperienceListCreateView(generics.ListCreateAPIView):
