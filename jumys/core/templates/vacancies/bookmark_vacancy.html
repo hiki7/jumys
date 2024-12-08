@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Bookmark Vacancy</h1>
+<p>Are you sure you want to bookmark the position "{{ vacancy.position_name.name }}" at {{ vacancy.company.name }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">Confirm</button>
+</form>
+<a href="{% url 'vacancy_list' %}" class="btn btn-secondary">Cancel</a>
+{% endblock %}

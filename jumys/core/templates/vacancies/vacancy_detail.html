@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ vacancy.position_name.name }}</h1>
+<p><strong>Company:</strong> {{ vacancy.company.name }}</p>
+<p><strong>Salary:</strong> {{ vacancy.salary_start }} - {{ vacancy.salary_end }} {{ vacancy.currency }}</p>
+<p><strong>Location:</strong> {{ vacancy.location }}</p>
+<p><strong>Employment Type:</strong>
+    {% for type in vacancy.employment_type.all %}
+        {{ type.name }}
+    {% endfor %}
+</p>
+<p><strong>Technologies:</strong>
+    {% for tech in vacancy.technology.all %}
+        {{ tech.technology_name }}
+    {% endfor %}
+</p>
+<p><strong>Active:</strong> {{ vacancy.is_active }}</p>
+
+{% if user.is_authenticated and user.role == 'seeker' %}
+    <form method="post" action="{% url 'apply_to_vacancy' vacancy.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Apply</button>
+    </form>
+    <form method="post" action="{% url 'bookmark_vacancy' vacancy.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-secondary">Bookmark</button>
+    </form>
+{% endif %}
+
+{% if user.is_authenticated and user.role in ['admin', 'hr'] %}
+    <a href="{% url 'vacancy_update' vacancy.id %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'vacancy_delete' vacancy.id %}" class="btn btn-danger">Delete</a>
+{% endif %}
+{% endblock %}
