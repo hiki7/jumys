@@ -5,7 +5,7 @@ from vacancies.models import Vacancy
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 
-class UserProfileView(generics.RetrieveUpdateAPIView):
+class UserProfileDetailView(generics.RetrieveUpdateAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -50,10 +50,16 @@ class BookmarkVacancyView(generics.GenericAPIView):
         user_profile.bookmarked_vacancies.remove(vacancy)
         return Response({'detail': 'Vacancy unbookmarked.'}, status=status.HTTP_200_OK)
 
-class AbilityListCreateView(generics.ListCreateAPIView):
-    queryset = Ability.objects.all()
+class UserAbilitiesView(generics.ListCreateAPIView):
     serializer_class = AbilitySerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return self.request.user.profile.abilities.all()
+
+    def perform_create(self, serializer):
+        serializer.save()
+
 
 class WorkExperienceListCreateView(generics.ListCreateAPIView):
     serializer_class = WorkExperienceSerializer
