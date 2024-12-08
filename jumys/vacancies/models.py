@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from companies.models import Company, Location
 
 CURRENCY = [("KZT", "₸"), ("RUB", "₽"), ("EUR", "€"), ("USD", "$")]
@@ -31,6 +32,11 @@ class Vacancy(models.Model):
     employment_type = models.ManyToManyField(EmploymentType, blank=True)
     technology = models.ManyToManyField(Technology, blank=True)
     is_active = models.BooleanField(default=True)
+    applications = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name="applied_vacancies",
+        blank=True
+    )
 
     def __str__(self):
         return f"{self.position_name.name} at {self.company.name}"
