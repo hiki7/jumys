@@ -110,3 +110,22 @@ class RequestReferenceView(APIView):
 
         serializer = ReferenceLetterSerializer(reference)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class ManageReferenceRequestView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, reference_id, action):
+        reference = get_object_or_404(ReferenceLetter, id=reference_id, recipient=request.user)
+
+        if action not in ['accept', 'reject']:
+            return Response({'detail': 'Invalid action.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        if reference.status != 'pending':
+            return Response({'detail': 'Reference request is not pending.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        reference.status = 'accepted' if action == 'accept' else 'rejected'
+        reference.save()
+
+        serializer = ReferenceLetterSerializer(reference)
+        return Response(serializer.data, status=status.HTTP_200_OK)
