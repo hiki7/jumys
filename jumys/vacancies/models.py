@@ -37,11 +37,6 @@ class Vacancy(models.Model):
         related_name="applied_vacancies",
         blank=True
     )
-    bookmarked_by = models.ManyToManyField(
-        settings.AUTH_USER_MODEL,
-        related_name="bookmarked_vacancies",
-        blank=True
-    )
 
     def __str__(self):
         return f"{self.position_name.name} at {self.company.name}"
