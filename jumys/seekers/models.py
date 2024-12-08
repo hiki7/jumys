@@ -29,6 +29,7 @@ class UserProfile(models.Model):
     links = models.TextField(blank=True, null=True)
     resume = models.FileField(upload_to='resumes/', blank=True, null=True)
     abilities = models.ManyToManyField(Ability, blank=True, related_name='users')
+    bookmarked_vacancies = models.ManyToManyField(Vacancy, blank=True, related_name='bookmarked_users')
 
     def __str__(self):
         return self.user.email
