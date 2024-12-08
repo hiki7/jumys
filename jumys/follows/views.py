@@ -1,5 +1,7 @@
 from rest_framework import generics, permissions, status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from .models import Follow, Connection, ReferenceLetter
 from .serializers import FollowSerializer, ConnectionSerializer, ReferenceLetterSerializer
@@ -90,3 +92,55 @@ class ReferenceLetterListView(generics.ListAPIView):
 
     def get_queryset(self):
         return ReferenceLetter.objects.filter(recipient=self.request.user)
+
+
+class RequestReferenceView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, user_id):
+        recipient = get_object_or_404(CustomUser, id=user_id)
+
+        if recipient == request.user:
+            return Response({'detail': 'You cannot request a reference from yourself.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        is_followed = Follow.objects.filter(follower=request.user, followee=recipient).exists()
+        is_connected = Connection.objects.filter(
+            sender=request.user, receiver=recipient, status='accepted'
+        ).exists() or Connection.objects.filter(
+            sender=recipient, receiver=request.user, status='accepted'
+        ).exists()
+
+        if not (is_followed and is_connected):
+            return Response(
+                {'detail': 'You can only request a reference from friends (mutual follow and connection).'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+
+        reference, created = ReferenceLetter.objects.get_or_create(
+            author=request.user, recipient=recipient, status='pending'
+        )
+        if not created:
+            return Response({'detail': 'A reference request is already pending.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = ReferenceLetterSerializer(reference)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
+class ManageReferenceRequestView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, reference_id, action):
+        reference = get_object_or_404(ReferenceLetter, id=reference_id, recipient=request.user)
+
+        if action not in ['accept', 'reject']:
+            return Response({'detail': 'Invalid action.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        if reference.status != 'pending':
+            return Response({'detail': 'Reference request is not pending.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        reference.status = 'accepted' if action == 'accept' else 'rejected'
+        reference.save()
+
+        serializer = ReferenceLetterSerializer(reference)
+        return Response(serializer.data, status=status.HTTP_200_OK)

@@ -34,9 +34,15 @@ class Connection(models.Model):
         return f"Connection from {self.sender} to {self.receiver}: {self.status}"
 
 class ReferenceLetter(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('accepted', 'Accepted'),
+        ('rejected', 'Rejected'),
+    ]
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reference_letters_written')
     recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reference_letters_received')
     content = models.TextField()
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
