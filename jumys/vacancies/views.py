@@ -2,7 +2,7 @@ from rest_framework import generics, permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-import users.permissions
+from users.permissions import IsSeeker, IsAdmin, IsHR, IsAdminOrHR
 from .models import Vacancy
 from seekers.models import Application
 from .serializers import VacancySerializer
@@ -10,16 +10,24 @@ from .serializers import VacancySerializer
 class VacancyListCreateView(generics.ListCreateAPIView):
     queryset = Vacancy.objects.all()
     serializer_class = VacancySerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return [permissions.AllowAny()]
+        return [permissions.IsAuthenticated(), IsAdminOrHR()]
 
 class VacancyDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Vacancy.objects.all()
     serializer_class = VacancySerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return [permissions.AllowAny()]
+        return [permissions.IsAuthenticated(), IsAdminOrHR()]
 
 
 class ApplyToVacancyView(APIView):
-    permission_classes = [permissions.IsAuthenticated, users.permissions.IsSeeker]
+    permission_classes = [permissions.IsAuthenticated, IsSeeker]
 
     def post(self, request, vacancy_id):
         user = request.user
@@ -38,7 +46,7 @@ class ApplyToVacancyView(APIView):
 
 
 class BookmarkVacancyView(APIView):
-    permission_classes = [permissions.IsAuthenticated, users.permissions.IsSeeker]
+    permission_classes = [permissions.IsAuthenticated, IsSeeker]
 
     def post(self, request, vacancy_id):
         user = request.user
