@@ -57,9 +57,6 @@ def register_view(request):
 
     return render(request, 'register.html', {'title': 'Register'})
 
-@login_required
-def profile_view(request):
-    return render(request, 'profile.html', {'title': 'Profile'})
 
 @login_required
 def post_view(request):

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Your Work Experience</h1>
+<ul>
+    {% for experience in work_experience %}
+        <li>
+            {{ experience.company.name }} - {{ experience.position.name }}
+            ({{ experience.start_date }} to {{ experience.end_date|default:"Ongoing" }})
+            <br>{{ experience.description }}
+            <a href="{% url 'manage_work_experience' experience.id %}" class="btn btn-warning btn-sm">Edit</a>
+            <form method="post" action="{% url 'delete_work_experience' experience.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Add Work Experience</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Work Experience</button>
+</form>
+<a href="{% url 'profile_detail' %}" class="btn btn-secondary mt-3">Back to Profile</a>
+{% endblock %}

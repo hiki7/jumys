@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Create Reference Letter</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<a href="{% url 'reference_letters_list' %}" class="btn btn-secondary">Back to Reference Letters</a>
+{% endblock %}

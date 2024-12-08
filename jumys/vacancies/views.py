@@ -1,75 +1,129 @@
-from rest_framework import generics, permissions, status
-from rest_framework.views import APIView
-from rest_framework.response import Response
-
-from users.permissions import IsSeeker, IsAdmin, IsHR, IsAdminOrHR
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from rest_framework.exceptions import PermissionDenied
+from users.permissions import IsSeeker, IsAdminOrHR
 from .models import Vacancy
 from seekers.models import Application
-from .serializers import VacancySerializer
-
-class VacancyListCreateView(generics.ListCreateAPIView):
-    queryset = Vacancy.objects.all()
-    serializer_class = VacancySerializer
-
-    def get_permissions(self):
-        if self.request.method in permissions.SAFE_METHODS:
-            return [permissions.AllowAny()]
-        return [permissions.IsAuthenticated(), IsAdminOrHR()]
-
-class VacancyDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Vacancy.objects.all()
-    serializer_class = VacancySerializer
-
-    def get_permissions(self):
-        if self.request.method in permissions.SAFE_METHODS:
-            return [permissions.AllowAny()]
-        return [permissions.IsAuthenticated(), IsAdminOrHR()]
+from .forms import VacancyForm
 
 
-class ApplyToVacancyView(APIView):
-    permission_classes = [permissions.IsAuthenticated, IsSeeker]
+# Helper to check permissions
+def check_permission(user, permission_class):
+    permission = permission_class()
+    if not permission.has_permission(None, None):
+        raise PermissionDenied
 
-    def post(self, request, vacancy_id):
-        user = request.user
-        user_profile = user.profile
-        try:
-            vacancy = Vacancy.objects.get(id=vacancy_id, is_active=True)
-        except Vacancy.DoesNotExist:
-            return Response({'detail': 'Vacancy does not exist or is inactive.'}, status=status.HTTP_404_NOT_FOUND)
+
+# Vacancy Views
+class VacancyListView(ListView):
+    model = Vacancy
+    template_name = "vacancies/vacancy_list.html"
+    context_object_name = "vacancies"
+
+    def get_queryset(self):
+        return Vacancy.objects.filter(is_active=True)
+
+
+class VacancyDetailView(DetailView):
+    model = Vacancy
+    template_name = "vacancies/vacancy_detail.html"
+    context_object_name = "vacancy"
+
+
+class VacancyCreateView(LoginRequiredMixin, CreateView):
+    model = Vacancy
+    form_class = VacancyForm
+    template_name = "vacancies/vacancy_form.html"
+    success_url = reverse_lazy("vacancy_list")
+
+    def dispatch(self, request, *args, **kwargs):
+        check_permission(request.user, IsAdminOrHR)
+        return super().dispatch(request, *args, **kwargs)
+
+
+class VacancyUpdateView(LoginRequiredMixin, UpdateView):
+    model = Vacancy
+    form_class = VacancyForm
+    template_name = "vacancies/vacancy_form.html"
+    success_url = reverse_lazy("vacancy_list")
+
+    def dispatch(self, request, *args, **kwargs):
+        check_permission(request.user, IsAdminOrHR)
+        return super().dispatch(request, *args, **kwargs)
+
+
+class VacancyDeleteView(LoginRequiredMixin, DeleteView):
+    model = Vacancy
+    template_name = "vacancies/vacancy_confirm_delete.html"
+    success_url = reverse_lazy("vacancy_list")
+
+    def dispatch(self, request, *args, **kwargs):
+        check_permission(request.user, IsAdminOrHR)
+        return super().dispatch(request, *args, **kwargs)
+
+
+# Application Views
+class ApplyToVacancyView(LoginRequiredMixin, DetailView):
+    model = Vacancy
+    template_name = "vacancies/apply_vacancy.html"
+
+    def post(self, request, *args, **kwargs):
+        vacancy = self.get_object()
+        user_profile = request.user.profile
+
+        if not vacancy.is_active:
+            return render(
+                request,
+                "vacancies/error.html",
+                {"message": "Vacancy does not exist or is inactive."},
+            )
 
         if Application.objects.filter(user_profile=user_profile, vacancy=vacancy).exists():
-            return Response({'detail': 'You have already applied to this vacancy.'}, status=status.HTTP_400_BAD_REQUEST)
+            return render(
+                request,
+                "vacancies/error.html",
+                {"message": "You have already applied to this vacancy."},
+            )
 
         Application.objects.create(user_profile=user_profile, vacancy=vacancy)
-        vacancy.applications.add(user)
-        return Response({'detail': 'Application submitted successfully.'}, status=status.HTTP_200_OK)
+        return redirect("vacancy_list")
 
 
-class BookmarkVacancyView(APIView):
-    permission_classes = [permissions.IsAuthenticated, IsSeeker]
+class BookmarkVacancyView(LoginRequiredMixin, DetailView):
+    model = Vacancy
+    template_name = "vacancies/bookmark_vacancy.html"
 
-    def post(self, request, vacancy_id):
-        user = request.user
-        try:
-            vacancy = Vacancy.objects.get(id=vacancy_id, is_active=True)
-        except Vacancy.DoesNotExist:
-            return Response({'detail': 'Vacancy does not exist or is inactive.'}, status=status.HTTP_404_NOT_FOUND)
+    def post(self, request, *args, **kwargs):
+        vacancy = self.get_object()
 
-        if user in vacancy.bookmarked_by.all():
-            return Response({'detail': 'Vacancy is already bookmarked.'}, status=status.HTTP_400_BAD_REQUEST)
+        if not vacancy.is_active:
+            return render(
+                request,
+                "vacancies/error.html",
+                {"message": "Vacancy does not exist or is inactive."},
+            )
 
-        vacancy.bookmarked_by.add(user)
-        return Response({'detail': 'Vacancy bookmarked successfully.'}, status=status.HTTP_200_OK)
+        if vacancy.bookmarked_by.filter(id=request.user.id).exists():
+            return render(
+                request,
+                "vacancies/error.html",
+                {"message": "Vacancy is already bookmarked."},
+            )
 
-    def delete(self, request, vacancy_id):
-        user = request.user
-        try:
-            vacancy = Vacancy.objects.get(id=vacancy_id, is_active=True)
-        except Vacancy.DoesNotExist:
-            return Response({'detail': 'Vacancy does not exist or is inactive.'}, status=status.HTTP_404_NOT_FOUND)
+        vacancy.bookmarked_by.add(request.user)
+        return redirect("vacancy_list")
 
-        if user not in vacancy.bookmarked_by.all():
-            return Response({'detail': 'Vacancy is not bookmarked.'}, status=status.HTTP_400_BAD_REQUEST)
+    def delete(self, request, *args, **kwargs):
+        vacancy = self.get_object()
 
-        vacancy.bookmarked_by.remove(user)
-        return Response({'detail': 'Vacancy unbookmarked successfully.'}, status=status.HTTP_200_OK)
+        if not vacancy.bookmarked_by.filter(id=request.user.id).exists():
+            return render(
+                request,
+                "vacancies/error.html",
+                {"message": "Vacancy is not bookmarked."},
+            )
+
+        vacancy.bookmarked_by.remove(request.user)
+        return redirect("vacancy_list")

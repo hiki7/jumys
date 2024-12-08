@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ user.profile.user.email }}'s Profile</h1>
+<p><strong>Phone:</strong> {{ user.profile.phone }}</p>
+<p><strong>Links:</strong> {{ user.profile.links }}</p>
+<p><strong>Resume:</strong>
+    {% if user.profile.resume %}
+        <a href="{{ user.profile.resume.url }}">Download Resume</a>
+    {% else %}
+        No resume uploaded.
+    {% endif %}
+</p>
+
+<h2>Abilities</h2>
+<ul>
+    {% for ability in user.profile.abilities.all %}
+        <li>{{ ability.technology }} ({{ ability.proficiency_level }} - {{ ability.experience_years }} years)</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'user_abilities' %}" class="btn btn-primary">Manage Abilities</a>
+
+<h2>Work Experience</h2>
+<ul>
+    {% for experience in user.profile.work_experience.all %}
+        <li>{{ experience.company.name }} - {{ experience.position.name }}
+            ({{ experience.start_date }} to {{ experience.end_date|default:"Ongoing" }})
+            <br>{{ experience.description }}
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'user_work_experience' %}" class="btn btn-primary">Manage Work Experience</a>
+
+<a href="{% url 'edit_profile' %}" class="btn btn-secondary mt-3">Edit Profile</a>
+{% endblock %}

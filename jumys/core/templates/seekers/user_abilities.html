@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Your Abilities</h1>
+<ul>
+    {% for ability in abilities %}
+        <li>
+            {{ ability.technology }} - {{ ability.proficiency_level }} ({{ ability.experience_years }} years)
+            <form method="post" action="{% url 'remove_ability' ability.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Add Ability</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Ability</button>
+</form>
+<a href="{% url 'profile_detail' %}" class="btn btn-secondary mt-3">Back to Profile</a>
+{% endblock %}

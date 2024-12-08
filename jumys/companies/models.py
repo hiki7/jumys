@@ -45,7 +45,7 @@ class Company(models.Model):
     name = models.CharField(max_length=255)
     company_description = models.TextField()
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
-    head_manager = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='companies_headed')
+    head_manager = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='companies_headed', null=True, blank=True)
     managers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='companies_managed', blank=True)
 
     def __str__(self):

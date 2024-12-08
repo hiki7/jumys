@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Vacancy List</h1>
+<ul>
+    {% for vacancy in vacancies %}
+        <li>
+            <a href="{% url 'vacancy_detail' vacancy.id %}">{{ vacancy.position_name.name }} at {{ vacancy.company.name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% if user.is_authenticated and user.role in ['admin', 'hr'] %}
+    <a href="{% url 'vacancy_create' %}" class="btn btn-primary">Create Vacancy</a>
+{% endif %}
+{% endblock %}
