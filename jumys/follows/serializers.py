@@ -14,4 +14,5 @@ class ConnectionSerializer(serializers.ModelSerializer):
 class ReferenceLetterSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReferenceLetter
-        fields = ['id', 'author', 'recipient', 'content', 'created_at']
+        fields = ['id', 'author', 'recipient', 'content', 'status', 'created_at']
+        read_only_fields = ['author', 'status', 'created_at', 'updated_at']
