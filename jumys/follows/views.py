@@ -99,8 +99,22 @@ class RequestReferenceView(APIView):
 
     def post(self, request, user_id):
         recipient = get_object_or_404(CustomUser, id=user_id)
+
         if recipient == request.user:
             return Response({'detail': 'You cannot request a reference from yourself.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        is_followed = Follow.objects.filter(follower=request.user, followee=recipient).exists()
+        is_connected = Connection.objects.filter(
+            sender=request.user, receiver=recipient, status='accepted'
+        ).exists() or Connection.objects.filter(
+            sender=recipient, receiver=request.user, status='accepted'
+        ).exists()
+
+        if not (is_followed and is_connected):
+            return Response(
+                {'detail': 'You can only request a reference from friends (mutual follow and connection).'},
+                status=status.HTTP_403_FORBIDDEN
+            )
 
         reference, created = ReferenceLetter.objects.get_or_create(
             author=request.user, recipient=recipient, status='pending'
@@ -110,6 +124,7 @@ class RequestReferenceView(APIView):
 
         serializer = ReferenceLetterSerializer(reference)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 
 
 class ManageReferenceRequestView(APIView):
