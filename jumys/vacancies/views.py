@@ -4,6 +4,7 @@ from rest_framework.response import Response
 
 import users.permissions
 from .models import Vacancy
+from seekers.models import Application
 from .serializers import VacancySerializer
 
 class VacancyListCreateView(generics.ListCreateAPIView):
@@ -22,14 +23,16 @@ class ApplyToVacancyView(APIView):
 
     def post(self, request, vacancy_id):
         user = request.user
+        user_profile = user.profile
         try:
             vacancy = Vacancy.objects.get(id=vacancy_id, is_active=True)
         except Vacancy.DoesNotExist:
             return Response({'detail': 'Vacancy does not exist or is inactive.'}, status=status.HTTP_404_NOT_FOUND)
 
-        if user in vacancy.applications.all():
+        if Application.objects.filter(user_profile=user_profile, vacancy=vacancy).exists():
             return Response({'detail': 'You have already applied to this vacancy.'}, status=status.HTTP_400_BAD_REQUEST)
 
+        Application.objects.create(user_profile=user_profile, vacancy=vacancy)
         vacancy.applications.add(user)
         return Response({'detail': 'Application submitted successfully.'}, status=status.HTTP_200_OK)
 
