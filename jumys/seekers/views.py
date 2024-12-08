@@ -71,7 +71,7 @@ class RemoveAbilityView(generics.DestroyAPIView):
         return get_object_or_404(self.request.user.profile.abilities, id=ability_id)
 
 
-class WorkExperienceListCreateView(generics.ListCreateAPIView):
+class UserWorkExperienceView(generics.ListCreateAPIView):
     serializer_class = WorkExperienceSerializer
     permission_classes = [permissions.IsAuthenticated]
 
