@@ -80,3 +80,11 @@ class UserWorkExperienceView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user_profile=self.request.user.profile)
+
+
+class ManageWorkExperienceView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = WorkExperienceSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return WorkExperience.objects.filter(user_profile=self.request.user.profile)
