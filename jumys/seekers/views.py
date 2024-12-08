@@ -1,5 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, permissions, status
+
+from vacancies.serializers import VacancySerializer
 from .models import UserProfile, Application, Ability, WorkExperience
 from .serializers import UserProfileSerializer, ApplicationSerializer, AbilitySerializer, WorkExperienceSerializer
 from vacancies.models import Vacancy
@@ -22,26 +24,25 @@ class UserAppliedVacanciesView(generics.ListAPIView):
         return Application.objects.filter(user_profile=self.request.user.profile).select_related('vacancy')
 
 
-class BookmarkVacancyView(generics.GenericAPIView):
+class UserBookmarkedVacanciesView(generics.ListAPIView):
+    serializer_class = VacancySerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def post(self, request, vacancy_id):
-        user_profile = request.user.profile
-        try:
-            vacancy = Vacancy.objects.get(id=vacancy_id)
-        except Vacancy.DoesNotExist:
-            return Response({'detail': 'Vacancy does not exist.'}, status=status.HTTP_404_NOT_FOUND)
-        user_profile.bookmarked_vacancies.add(vacancy)
-        return Response({'detail': 'Vacancy bookmarked.'}, status=status.HTTP_200_OK)
+    def get_queryset(self):
+        return self.request.user.profile.bookmarked_vacancies.filter(is_active=True)
 
-    def delete(self, request, vacancy_id):
-        user_profile = request.user.profile
-        try:
-            vacancy = Vacancy.objects.get(id=vacancy_id)
-        except Vacancy.DoesNotExist:
-            return Response({'detail': 'Vacancy does not exist.'}, status=status.HTTP_404_NOT_FOUND)
+class UserUnbookmarkVacancyView(generics.DestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def destroy(self, request, *args, **kwargs):
+        vacancy_id = self.kwargs['vacancy_id']
+        user_profile = self.request.user.profile
+
+        vacancy = get_object_or_404(user_profile.bookmarked_vacancies, id=vacancy_id)
+
         user_profile.bookmarked_vacancies.remove(vacancy)
-        return Response({'detail': 'Vacancy unbookmarked.'}, status=status.HTTP_200_OK)
+        return Response({'detail': 'Vacancy unbookmarked successfully.'}, status=status.HTTP_200_OK)
+
 
 class UserAbilitiesView(generics.ListCreateAPIView):
     serializer_class = AbilitySerializer
