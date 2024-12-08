@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Request Reference from {{ recipient.username }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Request</button>
+</form>
+<a href="{% url 'reference_requests_list' %}" class="btn btn-secondary">Back to Reference Requests</a>
+{% endblock %}

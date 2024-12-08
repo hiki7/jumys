@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Connection Requests</h1>
+<ul>
+    {% for connection in connection_requests %}
+        <li>
+            {{ connection.sender.username }}
+            <form method="post" action="{% url 'manage_connection' connection.id 'accept' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">Accept</button>
+            </form>
+            <form method="post" action="{% url 'manage_connection' connection.id 'decline' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Decline</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'profile' %}" class="btn btn-secondary">Back to Profile</a>
+{% endblock %}

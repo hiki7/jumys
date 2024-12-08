@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Reference Letters</h1>
+<ul>
+    {% for reference_letter in reference_letters %}
+        <li>
+            From: {{ reference_letter.author.username }}<br>
+            Content: {{ reference_letter.content }}<br>
+            Status: {{ reference_letter.status }}
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'profile' %}" class="btn btn-secondary">Back to Profile</a>
+{% endblock %}
