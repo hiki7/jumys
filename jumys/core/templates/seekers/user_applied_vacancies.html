@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Applied Vacancies</h1>
+<ul>
+    {% for application in applications %}
+        <li>{{ application.vacancy.position_name.name }} at {{ application.vacancy.company.name }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'seekers:profile_detail' %}" class="btn btn-secondary">Back to Profile</a>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Bookmarked Vacancies</h1>
+<ul>
+    {% for vacancy in bookmarked_vacancies %}
+        <li>
+            <strong>{{ vacancy.position_name.name }}</strong> at <strong>{{ vacancy.company.name }}</strong>
+            <br>
+            {{ vacancy.location }}
+            <form method="post" action="{% url 'user_bookmarked_vacancies' %}?vacancy_id={{ vacancy.id }}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Unbookmark</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'seekers:profile_detail' %}" class="btn btn-secondary mt-3">Back to Profile</a>
+{% endblock %}
