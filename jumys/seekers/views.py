@@ -14,21 +14,13 @@ class UserProfileDetailView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return self.request.user.profile
 
-class ApplyToVacancyView(generics.GenericAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+class UserAppliedVacanciesView(generics.ListAPIView):
     serializer_class = ApplicationSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
-    def post(self, request, vacancy_id):
-        user_profile = request.user.profile
-        try:
-            vacancy = Vacancy.objects.get(id=vacancy_id)
-        except Vacancy.DoesNotExist:
-            return Response({'detail': 'Vacancy does not exist.'}, status=status.HTTP_404_NOT_FOUND)
-        if Application.objects.filter(user_profile=user_profile, vacancy=vacancy).exists():
-            return Response({'detail': 'Already applied to this vacancy.'}, status=status.HTTP_400_BAD_REQUEST)
-        application = Application.objects.create(user_profile=user_profile, vacancy=vacancy)
-        serializer = self.get_serializer(application)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    def get_queryset(self):
+        return Application.objects.filter(user_profile=self.request.user.profile).select_related('vacancy')
+
 
 class BookmarkVacancyView(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
