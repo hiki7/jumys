@@ -20,13 +20,13 @@ class Street(models.Model):
     def __str__(self):
         return self.name
 
-class Location(models.Model):
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    city = models.ForeignKey(City, on_delete=models.CASCADE, null=True, blank=True)
-    street = models.ForeignKey(Street, on_delete=models.CASCADE, null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.city}, {self.country}, {self.street}"
+# class Location(models.Model):
+#     country = models.ForeignKey(Country, on_delete=models.CASCADE)
+#     city = models.ForeignKey(City, on_delete=models.CASCADE, null=True, blank=True)
+#     street = models.ForeignKey(Street, on_delete=models.CASCADE, null=True, blank=True)
+#
+#     def __str__(self):
+#         return f"{self.city}, {self.country}, {self.street}"
 
 
 class Location(models.Model):
