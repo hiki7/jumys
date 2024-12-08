@@ -20,6 +20,8 @@ class VacancySerializer(serializers.ModelSerializer):
     position_name = PositionSerializer()
     employment_type = EmploymentTypeSerializer(many=True)
     technology = TechnologySerializer(many=True)
+    applications = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    bookmarked_by = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Vacancy
