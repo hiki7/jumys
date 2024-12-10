@@ -230,7 +230,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '{levelname} {asctime} {module} {message}',
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
             'style': '{',
         },
         'simple': {
@@ -259,11 +259,12 @@ LOGGING = {
         },
         'app_logger': {  # Custom logger for application events
             'handlers': ['file', 'console'],
-            'level': 'INFO',
+            'level': 'DEBUG',
             'propagate': False,
         },
     },
 }
+
 
 
 AUTH_USER_MODEL = 'users.CustomUser'

@@ -10,7 +10,7 @@ from users.permissions import IsSeeker, IsAdminOrHR, IsAdminOrCompanyManager
 from .models import Vacancy
 from seekers.models import Application
 from .forms import VacancyForm
-
+from django.views import View
 
 # Vacancy Views
 class VacancyListView(LoginRequiredMixin, ListView):
@@ -123,26 +123,27 @@ class VacancyDeleteView(LoginRequiredMixin, DeleteView):
 
 
 # Application Views
-class ApplyToVacancyView(LoginRequiredMixin, DetailView):
-    model = Vacancy
-    template_name = "vacancies/apply_vacancy.html"
-
+class ApplyToVacancyView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
-        vacancy = self.get_object()
-        user = request.user
+        vacancy = get_object_or_404(Vacancy, pk=kwargs['pk'])
+        user_profile = getattr(request.user, 'profile', None)
 
         if not vacancy.is_active:
-            messages.error(request, "Vacancy does not exist or is inactive.")
-            return redirect("vacancy_list")
+            messages.error(request, "This vacancy is not active.")
+            return redirect("vacancy_detail", pk=vacancy.pk)
 
-        if Application.objects.filter(user_profile=user, vacancy=vacancy).exists():
+        if not user_profile:
+            messages.error(request, "You must complete your profile to apply for a vacancy.")
+            return redirect("profile")
+
+        if Application.objects.filter(user_profile=user_profile, vacancy=vacancy).exists():
             messages.error(request, "You have already applied to this vacancy.")
-            return redirect("vacancy_list")
+            return redirect("vacancy_detail", pk=vacancy.pk)
 
-        Application.objects.create(user_profile=user, vacancy=vacancy)
+        # Create the application
+        Application.objects.create(user_profile=user_profile, vacancy=vacancy)
         messages.success(request, "You have successfully applied to the vacancy.")
-        return redirect("vacancy_list")
-
+        return redirect("vacancy_detail", pk=vacancy.pk)
 
 class BookmarkVacancyView(LoginRequiredMixin, DetailView):
     model = Vacancy
