@@ -2,20 +2,22 @@
 
 {% block content %}
 <h1>Connection Requests</h1>
-<ul>
+<ul class="list-group">
     {% for connection in connection_requests %}
-        <li>
-            {{ connection.sender.username }}
-            <form method="post" action="{% url 'manage_connection' connection.id 'accept' %}">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ connection.sender.username }}
+        <div>
+            <form method="post" action="{% url 'manage_connection' connection.id 'accept' %}" class="d-inline">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-success">Accept</button>
             </form>
-            <form method="post" action="{% url 'manage_connection' connection.id 'decline' %}">
+            <form method="post" action="{% url 'manage_connection' connection.id 'decline' %}" class="d-inline">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Decline</button>
             </form>
-        </li>
+        </div>
+    </li>
     {% endfor %}
 </ul>
-<a href="{% url 'profile' %}" class="btn btn-secondary">Back to Profile</a>
+<a href="{% url 'profile' user.id %}" class="btn btn-secondary mt-3">Back to Profile</a>
 {% endblock %}

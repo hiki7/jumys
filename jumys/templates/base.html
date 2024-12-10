@@ -87,6 +87,13 @@
                 <li class="nav-item">
                   <a class="nav-link link-light" href="{% url 'profile' user.id %}"><i class="fas fa-user-circle"></i> Profile</a>
                 </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-light" href="{% url 'connection_requests' %}">
+                            <i class="fas fa-user-friends"></i> Connection Requests
+                        </a>
+                    </li>
+
+
                 {% endif %}
                 <li class="nav-item">
                   <a class="nav-link link-light logout-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
