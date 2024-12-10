@@ -97,7 +97,7 @@ DATABASES = {
     }
 }
 MEDIA_URL = '/resumes/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'resumes')
+MEDIA_ROOT = os.path.join(BASE_DIR, '')
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

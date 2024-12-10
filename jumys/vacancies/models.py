@@ -23,7 +23,7 @@ class Technology(models.Model):
         return self.technology_name
 
 class Vacancy(models.Model):
-    position_name = models.ForeignKey(Position, on_delete=models.CASCADE)
+    position_name = models.ForeignKey(Position, on_delete=models.CASCADE, db_index=True)
     salary_start = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     salary_end = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     currency = models.CharField(max_length=3, choices=CURRENCY, default="KZT")
@@ -31,7 +31,8 @@ class Vacancy(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     employment_type = models.ManyToManyField(EmploymentType, blank=True)
     technology = models.ManyToManyField(Technology, blank=True)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True, db_index=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     applications = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
         related_name="applied_vacancies",

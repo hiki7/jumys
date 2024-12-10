@@ -35,7 +35,7 @@ urlpatterns = [
     path('api/vacancies/', include('vacancies.urls')),
     path('api/follows/', include('follows.urls')),
     path('home/', home_view, name='home'),
-    # path('api/analytics/', include('analytics.urls')),
+    path('api/analytics/', include('analytics.urls')),
 
     ### Swagge
 ]
