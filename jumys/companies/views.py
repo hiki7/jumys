@@ -14,14 +14,13 @@ from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 
 # Application-Specific Imports
-from .models import Company
+from .models import Company, Location, Country, City, Street
 from .serializers import CompanySerializer
 from users.permissions import IsAdminOrCompanyManager
 from .forms import CompanyForm, AddManagerForm
-from .utils import get_location_from_nominatim  # Adjust the import path as needed
-from companies.models import Location, Country, City, Street
-from users.serializers import UserSerializer
+from .utils import get_location_from_nominatim
 from users.models import CustomUser
+from rest_framework.permissions import IsAuthenticated
 
 # Renders
 
@@ -45,7 +44,7 @@ class CreateCompanyHTMLView(View):
 
             validated_country = location_data['country']
             validated_city = location_data['city']
-            validated_street = location_data['street']
+            validated_street = location_data.get('street', '')
             latitude = location_data['latitude']
             longitude = location_data['longitude']
 
@@ -61,7 +60,16 @@ class CreateCompanyHTMLView(View):
                 street=street,
                 defaults={'latitude': latitude, 'longitude': longitude}
             )
-            if not created:
+
+            if not location:
+                location = Location.objects.create(
+                    country=country,
+                    city=city,
+                    street=street,
+                    latitude=latitude,
+                    longitude=longitude
+                )
+            else:
                 location.latitude = latitude
                 location.longitude = longitude
                 location.save()
@@ -112,8 +120,6 @@ class DeleteCompanyView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         messages.success(request, "Company deleted successfully!")
         return super().delete(request, *args, **kwargs)
 
-
-# companies/views.py
 
 @method_decorator(login_required, name='dispatch')
 class AddManagerView(View):

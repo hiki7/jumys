@@ -7271,3 +7271,244 @@ INFO 2024-12-10 19:30:49,002 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4669
 INFO 2024-12-10 19:30:49,820 basehttp "GET /api/vacancies/2/ HTTP/1.1" 200 4854
 INFO 2024-12-10 19:30:50,492 basehttp "GET /api/vacancies/2/update/ HTTP/1.1" 302 0
 INFO 2024-12-10 19:30:50,501 basehttp "GET /api/vacancies/ HTTP/1.1" 200 5002
+INFO 2024-12-10 19:34:36,743 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 19:34:53,680 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py changed, reloading.
+INFO 2024-12-10 19:34:54,736 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-10 19:34:55,555 log Unauthorized: /api/companies/create/
+WARNING 2024-12-10 19:34:55,555 basehttp "GET /api/companies/create/ HTTP/1.1" 401 3801
+INFO 2024-12-10 19:35:09,993 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py changed, reloading.
+INFO 2024-12-10 19:35:11,054 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 19:35:17,273 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py changed, reloading.
+INFO 2024-12-10 19:35:18,278 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-10 19:36:21,555 log Internal Server Error: /api/companies/create/
+Traceback (most recent call last):
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py", line 32, in get
+    form = CompanyForm()
+           ^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\forms.py", line 43, in __init__
+    if self.instance and self.instance.location:
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 267, in __get__
+    raise self.RelatedObjectDoesNotExist(
+companies.models.Company.location.RelatedObjectDoesNotExist: Company has no location.. Did you mean: 'location_id'?
+ERROR 2024-12-10 19:36:21,561 basehttp "GET /api/companies/create/ HTTP/1.1" 500 102214
+ERROR 2024-12-10 19:36:26,321 log Internal Server Error: /api/companies/create/
+Traceback (most recent call last):
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py", line 32, in get
+    form = CompanyForm()
+           ^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\forms.py", line 43, in __init__
+    if self.instance and self.instance.location:
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 267, in __get__
+    raise self.RelatedObjectDoesNotExist(
+companies.models.Company.location.RelatedObjectDoesNotExist: Company has no location.. Did you mean: 'location_id'?
+ERROR 2024-12-10 19:36:26,326 basehttp "GET /api/companies/create/ HTTP/1.1" 500 102214
+INFO 2024-12-10 19:36:47,223 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py changed, reloading.
+INFO 2024-12-10 19:36:48,366 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 19:39:01,114 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py changed, reloading.
+INFO 2024-12-10 19:39:02,188 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-10 19:39:03,017 log Internal Server Error: /api/companies/create/
+Traceback (most recent call last):
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py", line 30, in get
+    form = CompanyForm()
+           ^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\forms.py", line 43, in __init__
+    if self.instance and self.instance.location:
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 267, in __get__
+    raise self.RelatedObjectDoesNotExist(
+companies.models.Company.location.RelatedObjectDoesNotExist: Company has no location.. Did you mean: 'location_id'?
+ERROR 2024-12-10 19:39:03,024 basehttp "GET /api/companies/create/ HTTP/1.1" 500 102351
+INFO 2024-12-10 19:39:04,247 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4669
+ERROR 2024-12-10 19:39:05,581 log Internal Server Error: /api/companies/create/
+Traceback (most recent call last):
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py", line 30, in get
+    form = CompanyForm()
+           ^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\forms.py", line 43, in __init__
+    if self.instance and self.instance.location:
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 267, in __get__
+    raise self.RelatedObjectDoesNotExist(
+companies.models.Company.location.RelatedObjectDoesNotExist: Company has no location.. Did you mean: 'location_id'?
+ERROR 2024-12-10 19:39:05,588 basehttp "GET /api/companies/create/ HTTP/1.1" 500 102214
+INFO 2024-12-10 19:40:05,369 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py changed, reloading.
+INFO 2024-12-10 19:40:06,512 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 19:40:08,561 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4669
+ERROR 2024-12-10 19:40:09,174 log Internal Server Error: /api/companies/create/
+Traceback (most recent call last):
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py", line 30, in get
+    form = CompanyForm()
+           ^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\forms.py", line 43, in __init__
+    if self.instance and self.instance.location:
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 267, in __get__
+    raise self.RelatedObjectDoesNotExist(
+companies.models.Company.location.RelatedObjectDoesNotExist: Company has no location.. Did you mean: 'location_id'?
+ERROR 2024-12-10 19:40:09,180 basehttp "GET /api/companies/create/ HTTP/1.1" 500 102214
+INFO 2024-12-10 19:40:19,646 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-10 19:40:19,650 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-10 19:40:21,190 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 19:40:26,856 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-10 19:40:26,864 basehttp "GET /home/ HTTP/1.1" 200 4792
+ERROR 2024-12-10 19:40:27,904 log Internal Server Error: /api/companies/create/
+Traceback (most recent call last):
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py", line 30, in get
+    form = CompanyForm()
+           ^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\forms.py", line 43, in __init__
+    if self.instance and self.instance.location:
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 267, in __get__
+    raise self.RelatedObjectDoesNotExist(
+companies.models.Company.location.RelatedObjectDoesNotExist: Company has no location.. Did you mean: 'location_id'?
+ERROR 2024-12-10 19:40:27,908 basehttp "GET /api/companies/create/ HTTP/1.1" 500 102205
+INFO 2024-12-10 19:41:10,887 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\forms.py changed, reloading.
+INFO 2024-12-10 19:41:12,004 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 19:41:12,946 basehttp "GET /api/companies/create/ HTTP/1.1" 200 5573
+INFO 2024-12-10 19:41:36,814 basehttp "POST /api/companies/create/ HTTP/1.1" 200 5755
+INFO 2024-12-10 19:42:10,155 basehttp "POST /api/companies/create/ HTTP/1.1" 200 5757
+INFO 2024-12-10 19:42:50,523 basehttp "POST /api/companies/create/ HTTP/1.1" 302 0
+INFO 2024-12-10 19:42:50,546 basehttp "GET /api/companies/5/ HTTP/1.1" 200 7037
+INFO 2024-12-10 19:42:57,037 basehttp "POST /api/companies/5/add_manager/ HTTP/1.1" 200 6129
+INFO 2024-12-10 19:43:01,488 basehttp "POST /api/companies/5/add_manager/ HTTP/1.1" 302 0
+INFO 2024-12-10 19:43:01,501 basehttp "GET /api/companies/5/ HTTP/1.1" 200 7115
+INFO 2024-12-10 19:43:04,594 basehttp "GET /api/companies/5/edit/ HTTP/1.1" 200 5800
+INFO 2024-12-10 19:43:09,631 basehttp "POST /api/companies/5/edit/ HTTP/1.1" 302 0
+INFO 2024-12-10 19:43:09,647 basehttp "GET /api/companies/5/ HTTP/1.1" 200 7114
+INFO 2024-12-10 19:43:13,218 basehttp "GET /api/companies/create/ HTTP/1.1" 200 5573
+INFO 2024-12-10 19:43:15,025 basehttp "GET /home/ HTTP/1.1" 200 4482
+INFO 2024-12-10 19:43:15,720 basehttp "GET /api/seekers/profile/ HTTP/1.1" 200 4870
+INFO 2024-12-10 19:43:16,815 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4669
+INFO 2024-12-10 19:43:20,156 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-10 19:43:20,159 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-10 19:43:21,702 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 19:43:25,733 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-10 19:43:25,739 basehttp "GET /home/ HTTP/1.1" 200 4792
+INFO 2024-12-10 19:43:26,897 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4669
+INFO 2024-12-10 19:43:27,511 basehttp "GET /api/vacancies/create/ HTTP/1.1" 200 6814
+INFO 2024-12-10 19:43:40,270 basehttp "POST /api/vacancies/create/ HTTP/1.1" 302 0
+INFO 2024-12-10 19:43:40,281 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4766
+INFO 2024-12-10 19:43:42,533 basehttp "GET /api/vacancies/4/ HTTP/1.1" 200 4842
+INFO 2024-12-10 19:43:43,227 basehttp "GET /api/vacancies/4/update/ HTTP/1.1" 200 6844
+INFO 2024-12-10 19:43:46,478 basehttp "POST /api/vacancies/4/update/ HTTP/1.1" 302 0
+INFO 2024-12-10 19:43:46,494 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4766
+INFO 2024-12-10 19:43:47,597 basehttp "GET /api/vacancies/4/ HTTP/1.1" 200 4842
+INFO 2024-12-10 19:43:50,920 basehttp "GET /api/vacancies/2/ HTTP/1.1" 200 4854
+INFO 2024-12-10 19:43:51,652 basehttp "GET /api/vacancies/2/update/ HTTP/1.1" 302 0
+INFO 2024-12-10 19:43:51,661 basehttp "GET /api/vacancies/ HTTP/1.1" 200 5099
+INFO 2024-12-10 19:43:53,210 basehttp "GET /api/vacancies/3/ HTTP/1.1" 200 4842
+INFO 2024-12-10 19:43:53,886 basehttp "GET /api/vacancies/3/update/ HTTP/1.1" 200 6844
+INFO 2024-12-10 19:43:55,946 basehttp "GET /api/vacancies/3/delete/ HTTP/1.1" 200 4729
+INFO 2024-12-10 19:43:56,793 basehttp "POST /api/vacancies/3/delete/ HTTP/1.1" 302 0
+INFO 2024-12-10 19:43:56,804 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4672
