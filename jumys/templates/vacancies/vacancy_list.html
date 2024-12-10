@@ -10,7 +10,8 @@
     {% endfor %}
 </ul>
 
-{% if user.is_authenticated and user.role in ['admin', 'hr'] %}
+{% if can_create_vacancy %}
     <a href="{% url 'vacancy_create' %}" class="btn btn-primary">Create Vacancy</a>
 {% endif %}
+
 {% endblock %}

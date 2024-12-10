@@ -4,7 +4,7 @@ from .views import (
     CompanyDetailView,
     EditCompanyView,
     DeleteCompanyView,
-    AddManagerToCompanyView,
+    AddManagerView,
 )
 
 urlpatterns = [
@@ -15,5 +15,5 @@ urlpatterns = [
     path('<int:pk>/delete/', DeleteCompanyView.as_view(), name='delete_company'),
 
     # API Endpoints
-    path('api/<int:company_id>/add_manager/', AddManagerToCompanyView.as_view(), name='add_manager_to_company'),
+    path('<int:company_id>/add_manager/', AddManagerView.as_view(), name='add_manager_to_company'),
 ]

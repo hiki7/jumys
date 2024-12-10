@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Add Manager to {{ company.name }}{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Add Manager to {{ company.name }}</h2>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_user">Select Manager(s):</label>
+            {{ form.user }}  <!-- No need to pass attrs here since they're defined in the form -->
+            {% if form.user.errors %}
+                <div class="text-danger">
+                    {{ form.user.errors }}
+                </div>
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary">Add Manager</button>
+        <a href="{% url 'company_detail' company.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock content %}

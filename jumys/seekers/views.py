@@ -95,13 +95,13 @@ class UserWorkExperienceView(LoginRequiredMixin, View):
 # Remove Work Experience
 class ManageWorkExperienceView(LoginRequiredMixin, View):
     def get(self, request, work_experience_id):
-        work_experience = get_object_or_404(WorkExperience, id=work_experience_id, profile=request.user.profile)
+        work_experience = get_object_or_404(WorkExperience, id=work_experience_id, user_profile=request.user.profile)
         form = WorkExperienceForm(instance=work_experience)
         context = {'form': form}
         return render(request, 'seekers/manage_work_experience.html', context)
 
     def post(self, request, work_experience_id):
-        work_experience = get_object_or_404(WorkExperience, id=work_experience_id, profile=request.user.profile)
+        work_experience = get_object_or_404(WorkExperience, id=work_experience_id, user_profile=request.user.profile)
         form = WorkExperienceForm(request.POST, instance=work_experience)
         if form.is_valid():
             form.save()
@@ -109,7 +109,9 @@ class ManageWorkExperienceView(LoginRequiredMixin, View):
         context = {'form': form}
         return render(request, 'seekers/manage_work_experience.html', context)
 
-    def delete(self, request, work_experience_id):
-        work_experience = get_object_or_404(WorkExperience, id=work_experience_id, profile=request.user.profile)
+
+class DeleteWorkExperienceView(LoginRequiredMixin, View):
+    def post(self, request, work_experience_id):
+        work_experience = get_object_or_404(WorkExperience, id=work_experience_id, user_profile=request.user.profile)
         work_experience.delete()
         return redirect('work_experience')

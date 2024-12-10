@@ -8,6 +8,7 @@ from .views import (
     RemoveAbilityView,
     UserWorkExperienceView,
     ManageWorkExperienceView,
+    DeleteWorkExperienceView
 )
 
 urlpatterns = [
@@ -28,8 +29,13 @@ urlpatterns = [
     ),
     path('profile/work-experience/', UserWorkExperienceView.as_view(), name='work_experience'),
     path(
-        'profile/work-experience/<int:pk>/',
+        'profile/work-experience/<int:work_experience_id>/',
         ManageWorkExperienceView.as_view(),
         name='manage_work_experience'
+    ),
+    path(
+        'profile/work-experience/<int:work_experience_id>/delete/',
+        DeleteWorkExperienceView.as_view(),
+        name='delete_work_experience'
     ),
 ]

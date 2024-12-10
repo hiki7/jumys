@@ -7,12 +7,12 @@
 <p><strong>Location:</strong> {{ vacancy.location }}</p>
 <p><strong>Employment Type:</strong>
     {% for type in vacancy.employment_type.all %}
-        {{ type.name }}
+        {{ type.name }}{% if not forloop.last %}, {% endif %}
     {% endfor %}
 </p>
 <p><strong>Technologies:</strong>
     {% for tech in vacancy.technology.all %}
-        {{ tech.technology_name }}
+        {{ tech.technology_name }}{% if not forloop.last %}, {% endif %}
     {% endfor %}
 </p>
 <p><strong>Active:</strong> {{ vacancy.is_active }}</p>
@@ -28,7 +28,7 @@
     </form>
 {% endif %}
 
-{% if user.is_authenticated and user.role in ['admin', 'hr'] %}
+{% if can_edit %}
     <a href="{% url 'vacancy_update' vacancy.id %}" class="btn btn-warning">Edit</a>
     <a href="{% url 'vacancy_delete' vacancy.id %}" class="btn btn-danger">Delete</a>
 {% endif %}

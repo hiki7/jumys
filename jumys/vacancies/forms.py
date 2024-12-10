@@ -29,11 +29,30 @@ class TechnologyForm(forms.ModelForm):
         }
 
 
-class VacancyForm(forms.ModelForm):
-    position_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    employment_type = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}), required=False)
-    technology = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}), required=False)
+from companies.models import Company
 
+class VacancyForm(forms.ModelForm):
+    position_name = forms.ModelChoiceField(
+        queryset=Position.objects.all(),
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        empty_label="Select Position"
+    )
+    employment_type = forms.ModelMultipleChoiceField(
+        queryset=EmploymentType.objects.all(),
+        widget=forms.CheckboxSelectMultiple(),
+        required=False
+    )
+    technology = forms.ModelMultipleChoiceField(
+        queryset=Technology.objects.all(),
+        widget=forms.CheckboxSelectMultiple(),
+        required=False
+    )
+    company = forms.ModelChoiceField(
+        queryset=Company.objects.none(),
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        empty_label="Select Company"
+    )
+    
     class Meta:
         model = Vacancy
         fields = [
@@ -51,33 +70,24 @@ class VacancyForm(forms.ModelForm):
             "salary_start": forms.NumberInput(attrs={"class": "form-control"}),
             "salary_end": forms.NumberInput(attrs={"class": "form-control"}),
             "currency": forms.Select(attrs={"class": "form-control"}),
-            "company": forms.Select(attrs={"class": "form-control"}),
             "location": forms.Select(attrs={"class": "form-control"}),
             "is_active": forms.CheckboxInput(attrs={"class": "form-check-input"}),
         }
 
-    def save(self, commit=True):
-        position_name = self.cleaned_data.pop('position_name')
-        employment_type_data = self.cleaned_data.pop('employment_type', None)
-        technology_data = self.cleaned_data.pop('technology', None)
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(VacancyForm, self).__init__(*args, **kwargs)
+        if self.user:
+            if self.user.role == 'admin':
+                self.fields['company'].queryset = Company.objects.all()
+            elif self.user.role == 'hr':
+                self.fields['company'].queryset = self.user.companies_managed.all()
+            else:
+                self.fields['company'].queryset = Company.objects.none()
 
-        position, created = Position.objects.get_or_create(name=position_name)
-        self.instance.position_name = position
+    def clean_company(self):
+        company = self.cleaned_data.get('company')
+        if self.user and self.user.role == 'hr' and not self.user.companies_managed.filter(id=company.id).exists():
+            raise forms.ValidationError("You do not have permission to create a vacancy for this company.")
+        return company
 
-        vacancy = super().save(commit=commit)
-
-        if employment_type_data:
-            employment_type_list = [name.strip() for name in employment_type_data.split(',')]
-            vacancy.employment_type.clear()
-            for et_name in employment_type_list:
-                employment_type, created = EmploymentType.objects.get_or_create(name=et_name)
-                vacancy.employment_type.add(employment_type)
-
-        if technology_data:
-            technology_list = [name.strip() for name in technology_data.split(',')]
-            vacancy.technology.clear()
-            for tech_name in technology_list:
-                technology, created = Technology.objects.get_or_create(technology_name=tech_name)
-                vacancy.technology.add(technology)
-
-        return vacancy

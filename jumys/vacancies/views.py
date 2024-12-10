@@ -1,23 +1,19 @@
+# vacancies/views.py
+
+from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from rest_framework.exceptions import PermissionDenied
-from users.permissions import IsSeeker, IsAdminOrHR
+from django.contrib.messages.views import SuccessMessageMixin
+from users.permissions import IsSeeker, IsAdminOrHR, IsAdminOrCompanyManager
 from .models import Vacancy
 from seekers.models import Application
 from .forms import VacancyForm
 
 
-# Helper to check permissions
-def check_permission(user, permission_class):
-    permission = permission_class()
-    if not permission.has_permission(None, None):
-        raise PermissionDenied
-
-
 # Vacancy Views
-class VacancyListView(ListView):
+class VacancyListView(LoginRequiredMixin, ListView):
     model = Vacancy
     template_name = "vacancies/vacancy_list.html"
     context_object_name = "vacancies"
@@ -25,11 +21,34 @@ class VacancyListView(ListView):
     def get_queryset(self):
         return Vacancy.objects.filter(is_active=True)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        if user.role in ['admin', 'hr']:
+            context['can_create_vacancy'] = True
+        else:
+            context['can_create_vacancy'] = False
+        return context
+
 
 class VacancyDetailView(DetailView):
     model = Vacancy
     template_name = "vacancies/vacancy_detail.html"
     context_object_name = "vacancy"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        vacancy = self.get_object()
+        context['can_edit'] = (
+            user.is_authenticated and (
+                user.role == 'admin' or
+                user.role == 'hr' or
+                user in vacancy.company.managers.all() or
+                user == vacancy.company.head_manager
+            )
+        )
+        return context
 
 
 class VacancyCreateView(LoginRequiredMixin, CreateView):
@@ -38,9 +57,25 @@ class VacancyCreateView(LoginRequiredMixin, CreateView):
     template_name = "vacancies/vacancy_form.html"
     success_url = reverse_lazy("vacancy_list")
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
+    def form_valid(self, form):
+        if self.request.user.role == 'hr':
+            company = form.cleaned_data.get('company')
+            if not self.request.user.companies_managed.filter(id=company.id).exists():
+                form.add_error('company', "You do not have permission to create a vacancy for this company.")
+                return self.form_invalid(form)
+        return super().form_valid(form)
+
     def dispatch(self, request, *args, **kwargs):
-        check_permission(request.user, IsAdminOrHR)
-        return super().dispatch(request, *args, **kwargs)
+        if request.user.role in ['admin', 'hr']:
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            messages.error(request, "You do not have permission to create a vacancy.")
+            return redirect("vacancy_list")
 
 
 class VacancyUpdateView(LoginRequiredMixin, UpdateView):
@@ -49,9 +84,27 @@ class VacancyUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "vacancies/vacancy_form.html"
     success_url = reverse_lazy("vacancy_list")
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
+    def form_valid(self, form):
+        if self.request.user.role == 'hr':
+            company = form.cleaned_data.get('company')
+            if not self.request.user.companies_managed.filter(id=company.id).exists():
+                form.add_error('company', "You do not have permission to edit a vacancy for this company.")
+                return self.form_invalid(form)
+        return super().form_valid(form)
+
     def dispatch(self, request, *args, **kwargs):
-        check_permission(request.user, IsAdminOrHR)
-        return super().dispatch(request, *args, **kwargs)
+        vacancy = self.get_object()
+        if request.user.role == 'admin' or \
+           (request.user.role == 'hr' and request.user.companies_managed.filter(id=vacancy.company.id).exists()):
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            messages.error(request, "You do not have permission to edit this vacancy.")
+            return redirect("vacancy_list")
 
 
 class VacancyDeleteView(LoginRequiredMixin, DeleteView):
@@ -60,8 +113,13 @@ class VacancyDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("vacancy_list")
 
     def dispatch(self, request, *args, **kwargs):
-        check_permission(request.user, IsAdminOrHR)
-        return super().dispatch(request, *args, **kwargs)
+        vacancy = self.get_object()
+        if request.user.role == 'admin' or \
+           (request.user.role == 'hr' and request.user.companies_managed.filter(id=vacancy.company.id).exists()):
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            messages.error(request, "You do not have permission to delete this vacancy.")
+            return redirect("vacancy_list")
 
 
 # Application Views
@@ -71,23 +129,18 @@ class ApplyToVacancyView(LoginRequiredMixin, DetailView):
 
     def post(self, request, *args, **kwargs):
         vacancy = self.get_object()
-        user_profile = request.user.profile
+        user = request.user
 
         if not vacancy.is_active:
-            return render(
-                request,
-                "vacancies/error.html",
-                {"message": "Vacancy does not exist or is inactive."},
-            )
+            messages.error(request, "Vacancy does not exist or is inactive.")
+            return redirect("vacancy_list")
 
-        if Application.objects.filter(user_profile=user_profile, vacancy=vacancy).exists():
-            return render(
-                request,
-                "vacancies/error.html",
-                {"message": "You have already applied to this vacancy."},
-            )
+        if Application.objects.filter(user_profile=user, vacancy=vacancy).exists():
+            messages.error(request, "You have already applied to this vacancy.")
+            return redirect("vacancy_list")
 
-        Application.objects.create(user_profile=user_profile, vacancy=vacancy)
+        Application.objects.create(user_profile=user, vacancy=vacancy)
+        messages.success(request, "You have successfully applied to the vacancy.")
         return redirect("vacancy_list")
 
 
@@ -97,33 +150,28 @@ class BookmarkVacancyView(LoginRequiredMixin, DetailView):
 
     def post(self, request, *args, **kwargs):
         vacancy = self.get_object()
+        user = request.user
 
         if not vacancy.is_active:
-            return render(
-                request,
-                "vacancies/error.html",
-                {"message": "Vacancy does not exist or is inactive."},
-            )
+            messages.error(request, "Vacancy does not exist or is inactive.")
+            return redirect("vacancy_list")
 
-        if vacancy.bookmarked_by.filter(id=request.user.id).exists():
-            return render(
-                request,
-                "vacancies/error.html",
-                {"message": "Vacancy is already bookmarked."},
-            )
+        if vacancy.bookmarked_by.filter(id=user.id).exists():
+            messages.error(request, "Vacancy is already bookmarked.")
+            return redirect("vacancy_list")
 
-        vacancy.bookmarked_by.add(request.user)
+        vacancy.bookmarked_by.add(user)
+        messages.success(request, "Vacancy bookmarked successfully.")
         return redirect("vacancy_list")
 
     def delete(self, request, *args, **kwargs):
         vacancy = self.get_object()
+        user = request.user
 
-        if not vacancy.bookmarked_by.filter(id=request.user.id).exists():
-            return render(
-                request,
-                "vacancies/error.html",
-                {"message": "Vacancy is not bookmarked."},
-            )
+        if not vacancy.bookmarked_by.filter(id=user.id).exists():
+            messages.error(request, "Vacancy is not bookmarked.")
+            return redirect("vacancy_list")
 
-        vacancy.bookmarked_by.remove(request.user)
+        vacancy.bookmarked_by.remove(user)
+        messages.success(request, "Vacancy removed from bookmarks.")
         return redirect("vacancy_list")
