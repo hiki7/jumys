@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>All Seekers</h1>
+<ul class="list-group">
+    {% for seeker in seekers %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{% url 'profile' seeker.id %}" class="text-decoration-none">
+            {{ seeker.username }}
+        </a>
+        {% if seeker.is_connected %}
+            <span>Already Connected</span>
+        {% elif seeker.request_sent %}
+            <span>Request Sent</span>
+        {% else %}
+            <button
+                class="btn btn-sm btn-outline-primary connect-btn"
+                data-id="{{ seeker.id }}">
+                Send Connection Request
+            </button>
+        {% endif %}
+        <button
+            class="btn btn-sm btn-outline-primary follow-btn"
+            data-id="{{ seeker.id }}">
+            {% if seeker.is_following %}
+                Unfollow
+            {% else %}
+                Follow
+            {% endif %}
+        </button>
+    </li>
+    {% endfor %}
+</ul>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.follow-btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const userId = this.getAttribute('data-id');
+                fetch("{% url 'follow_user' 0 %}".replace('0', userId), {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        this.textContent = this.textContent === 'Follow' ? 'Unfollow' : 'Follow';
+                    } else {
+                        alert(data.error);
+                    }
+                });
+            });
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.connect-btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const userId = this.getAttribute('data-id');
+                fetch("{% url 'connection_request' 0 %}".replace('0', userId), {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        alert(data.message);
+                        this.textContent = "Request Sent";
+                        this.disabled = true;
+                    } else {
+                        alert(data.error);
+                    }
+                });
+            });
+        });
+    });
+</script>
+{% endblock %}

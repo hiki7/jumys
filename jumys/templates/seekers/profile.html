@@ -1,35 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ user.profile.user.email }}'s Profile</h1>
-<p><strong>Phone:</strong> {{ user.profile.phone }}</p>
-<p><strong>Links:</strong> {{ user.profile.links }}</p>
+<h1>{{ profile.user.username }}'s Profile</h1>
+<p><strong>Phone:</strong> {{ profile.phone }}</p>
+<p><strong>Links:</strong> {{ profile.links }}</p>
 <p><strong>Resume:</strong>
-    {% if user.profile.resume %}
-        <a href="{{ user.profile.resume.url }}">Download Resume</a>
+    {% if profile.resume %}
+        <a href="{{ profile.resume.url }}">Download Resume</a>
     {% else %}
         No resume uploaded.
     {% endif %}
 </p>
 
+<h2><a href="{% url 'followers_list' profile.user.id %}">Followers</a></h2>
+    <h2><a href="{% url 'connections_list' profile.user.id %}">Connections</a></h2>
+
+
 <h2>Abilities</h2>
 <ul>
-    {% for ability in user.profile.abilities.all %}
+    {% for ability in profile.abilities.all %}
         <li>{{ ability.technology }} ({{ ability.proficiency_level }} - {{ ability.experience_years }} years)</li>
     {% endfor %}
 </ul>
+{% if profile.user == user %}
 <a href="{% url 'abilities' %}" class="btn btn-primary">Manage Abilities</a>
+{% endif %}
 
 <h2>Work Experience</h2>
 <ul>
-    {% for experience in user.profile.work_experience.all %}
+    {% for experience in profile.work_experience.all %}
         <li>{{ experience.company.name }} - {{ experience.position.name }}
             ({{ experience.start_date }} to {{ experience.end_date|default:"Ongoing" }})
             <br>{{ experience.description }}
         </li>
     {% endfor %}
 </ul>
+{% if profile.user == user %}
 <a href="{% url 'work_experience' %}" class="btn btn-primary">Manage Work Experience</a>
-
 <a href="{% url 'profile_edit' %}" class="btn btn-secondary mt-3">Edit Profile</a>
+{% endif %}
 {% endblock %}

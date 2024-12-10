@@ -5,6 +5,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Follow, Connection, ReferenceLetter
 from .forms import FollowForm, ConnectionRequestForm, ReferenceLetterForm
 from users.models import CustomUser
+from django.http import JsonResponse
+from django.db.models import Q
+
 
 
 # Follow/Unfollow Users
@@ -12,23 +15,28 @@ class FollowUserView(LoginRequiredMixin, View):
     def post(self, request, user_id):
         followee = get_object_or_404(CustomUser, id=user_id)
         if followee == request.user:
-            messages.error(request, 'You cannot follow yourself.')
-            return redirect('followers_list', user_id=user_id)
+            return JsonResponse({'error': 'You cannot follow yourself.'}, status=400)
 
         follow, created = Follow.objects.get_or_create(follower=request.user, followee=followee)
         if created:
-            messages.success(request, f'You are now following {followee.username}.')
+            is_following = True
+            message = 'Followed successfully.'
         else:
             follow.delete()
-            messages.success(request, f'You have unfollowed {followee.username}.')
-        return redirect('followers_list', user_id=user_id)
+            is_following = False
+            message = 'Unfollowed successfully.'
+
+        return JsonResponse({'message': message, 'is_following': is_following})
 
 
 # List Followers
 class ListFollowersView(LoginRequiredMixin, View):
     def get(self, request, user_id):
         followers = Follow.objects.filter(followee_id=user_id)
-        return render(request, 'follows/followers_list.html', {'followers': followers})
+        return render(request, 'follows/followers_list.html', {
+            'followers': followers,
+            'user_id': user_id
+        })
 
 
 # Connection Requests
@@ -36,17 +44,45 @@ class ConnectionRequestView(LoginRequiredMixin, View):
     def post(self, request, user_id):
         receiver = get_object_or_404(CustomUser, id=user_id)
         if receiver == request.user:
-            messages.error(request, 'You cannot connect with yourself.')
-            return redirect('connection_requests')
+            return JsonResponse({'error': 'You cannot connect with yourself.'}, status=400)
 
-        form = ConnectionRequestForm({'receiver': receiver.id})
-        if form.is_valid():
-            connection, created = Connection.objects.get_or_create(sender=request.user, receiver=receiver)
-            if created:
-                messages.success(request, f'Connection request sent to {receiver.username}.')
-            else:
-                messages.error(request, 'Connection request already exists.')
-        return redirect('connection_requests')
+        connection, created = Connection.objects.get_or_create(sender=request.user, receiver=receiver)
+        if created:
+            return JsonResponse({'message': 'Connection request sent successfully.', 'status': 'pending'})
+        else:
+            return JsonResponse({'message': 'Connection request already exists.', 'status': connection.status})
+
+
+class ConnectionRequestsView(LoginRequiredMixin, View):
+    def get(self, request):
+        connection_requests = Connection.objects.filter(receiver=request.user, status='pending')
+        return render(request, 'follows/connection_request.html', {'connection_requests': connection_requests})
+
+class ConnectionsListView(LoginRequiredMixin, View):
+    def get(self, request, user_id):
+        connections = Connection.objects.filter(
+            (Q(sender_id=user_id) | Q(receiver_id=user_id)) & Q(status='accepted')
+        )
+        processed_connections = [
+            {
+                'id': connection.id,
+                'partner': connection.receiver if connection.sender == request.user else connection.sender
+            }
+            for connection in connections
+        ]
+        return render(request, 'follows/connections_list.html', {'connections': processed_connections})
+
+
+class RemoveConnectionView(LoginRequiredMixin, View):
+    def post(self, request, connection_id):
+        connection = get_object_or_404(Connection, id=connection_id)
+        if connection.sender == request.user or connection.receiver == request.user:
+            connection.delete()
+            messages.success(request, 'Connection removed successfully.')
+        else:
+            messages.error(request, 'You are not authorized to remove this connection.')
+        return redirect('connections_list', user_id=request.user.id)
+
 
 
 # Approve/Decline Connection Requests
@@ -148,3 +184,28 @@ class ManageReferenceRequestView(LoginRequiredMixin, View):
         reference.save()
         messages.success(request, f'Reference request has been {reference.status}.')
         return redirect('reference_requests_list')
+
+
+# List All Seekers
+class ListSeekersView(LoginRequiredMixin, View):
+    def get(self, request):
+        seekers = CustomUser.objects.filter(role="seeker").exclude(id=request.user.id).select_related('profile')
+        seekers_with_follow_and_connection_state = [
+            {
+                'id': seeker.id,
+                'username': seeker.username,
+                'email': seeker.email,
+                'is_following': request.user.following.filter(followee=seeker).exists(),
+                'is_connected': Connection.objects.filter(
+                    (Q(sender=request.user, receiver=seeker) | Q(sender=seeker, receiver=request.user)) &
+                    Q(status='accepted')
+                ).exists(),
+                'request_sent': Connection.objects.filter(sender=request.user, receiver=seeker, status='pending').exists(),
+            }
+            for seeker in seekers
+        ]
+        return render(request, 'follows/list_seekers.html', {'seekers': seekers_with_follow_and_connection_state})
+
+
+
+

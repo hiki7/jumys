@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Connections</h1>
+<ul class="list-group">
+    {% for connection in connections %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{% url 'profile' connection.partner.id %}">
+            {{ connection.partner.username }}
+        </a>
+        <form method="post" action="{% url 'remove_connection' connection.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-sm">Remove Connection</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'profile' user.id %}" class="btn btn-secondary mt-3">Back to Profile</a>
+{% endblock %}
