@@ -200,10 +200,12 @@ class ListSeekersView(LoginRequiredMixin, View):
                     (Q(sender=request.user, receiver=seeker) | Q(sender=seeker, receiver=request.user)) &
                     Q(status='accepted')
                 ).exists(),
+                'request_sent': Connection.objects.filter(sender=request.user, receiver=seeker, status='pending').exists(),
             }
             for seeker in seekers
         ]
         return render(request, 'follows/list_seekers.html', {'seekers': seekers_with_follow_and_connection_state})
+
 
 
 

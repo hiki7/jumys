@@ -10,6 +10,8 @@
         </a>
         {% if seeker.is_connected %}
             <span>Already Connected</span>
+        {% elif seeker.request_sent %}
+            <span>Request Sent</span>
         {% else %}
             <button
                 class="btn btn-sm btn-outline-primary connect-btn"
@@ -54,30 +56,29 @@
         });
     });
     document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelectorAll('.connect-btn');
-    buttons.forEach(button => {
-        button.addEventListener('click', function () {
-            const userId = this.getAttribute('data-id');
-            fetch("{% url 'connection_request' 0 %}".replace('0', userId), { // Fix here
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': '{{ csrf_token }}',
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message) {
-                    alert(data.message);
-                    this.textContent = "Request Sent";
-                    this.disabled = true;
-                } else {
-                    alert(data.error);
-                }
+        const buttons = document.querySelectorAll('.connect-btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const userId = this.getAttribute('data-id');
+                fetch("{% url 'connection_request' 0 %}".replace('0', userId), {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        alert(data.message);
+                        this.textContent = "Request Sent";
+                        this.disabled = true;
+                    } else {
+                        alert(data.error);
+                    }
+                });
             });
         });
     });
-});
-
 </script>
 {% endblock %}
