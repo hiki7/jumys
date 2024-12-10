@@ -7512,3 +7512,1111 @@ INFO 2024-12-10 19:43:53,886 basehttp "GET /api/vacancies/3/update/ HTTP/1.1" 20
 INFO 2024-12-10 19:43:55,946 basehttp "GET /api/vacancies/3/delete/ HTTP/1.1" 200 4729
 INFO 2024-12-10 19:43:56,793 basehttp "POST /api/vacancies/3/delete/ HTTP/1.1" 302 0
 INFO 2024-12-10 19:43:56,804 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4672
+INFO 2024-12-10 14:55:50,418 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 14:55:52,239 basehttp "GET / HTTP/1.1" 302 0
+INFO 2024-12-10 14:55:52,271 basehttp "GET /api/docs/swagger/ HTTP/1.1" 200 4653
+INFO 2024-12-10 14:55:52,421 basehttp "GET /api/schema/ HTTP/1.1" 200 9618
+WARNING 2024-12-10 14:56:02,370 log Not Found: /api/
+WARNING 2024-12-10 14:56:02,371 basehttp "GET /api/ HTTP/1.1" 404 3787
+WARNING 2024-12-10 14:56:02,399 log Not Found: /favicon.ico
+WARNING 2024-12-10 14:56:02,400 basehttp "GET /favicon.ico HTTP/1.1" 404 3808
+WARNING 2024-12-10 14:56:06,646 log Not Found: /api/home
+WARNING 2024-12-10 14:56:06,647 basehttp "GET /api/home HTTP/1.1" 404 3799
+INFO 2024-12-10 14:56:12,594 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 14:56:15,995 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-10 14:56:18,892 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 14:56:19,616 basehttp "GET /api/users/register/ HTTP/1.1" 200 4325
+INFO 2024-12-10 14:56:25,483 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 14:56:26,016 basehttp "GET /api/users/register/ HTTP/1.1" 200 4325
+INFO 2024-12-10 14:56:26,912 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-10 14:56:27,346 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 14:56:27,936 basehttp "GET /api/users/register/ HTTP/1.1" 200 4325
+INFO 2024-12-10 14:56:34,855 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 14:56:40,751 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-10 14:56:40,757 basehttp "GET /home/ HTTP/1.1" 200 4792
+INFO 2024-12-10 14:56:43,102 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4672
+INFO 2024-12-10 14:56:45,516 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-10 14:56:45,521 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-10 14:56:46,881 basehttp "GET /api/users/register/ HTTP/1.1" 200 4325
+INFO 2024-12-10 14:56:55,264 basehttp "POST /api/users/register/ HTTP/1.1" 302 0
+INFO 2024-12-10 14:56:55,269 basehttp "GET /api/users/login/ HTTP/1.1" 200 4537
+INFO 2024-12-10 14:57:01,610 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-10 14:57:01,616 basehttp "GET /home/ HTTP/1.1" 200 4593
+INFO 2024-12-10 14:57:03,345 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4392
+INFO 2024-12-10 14:57:04,554 basehttp "GET /api/vacancies/2/ HTTP/1.1" 200 5056
+ERROR 2024-12-10 14:57:05,667 log Internal Server Error: /api/vacancies/2/apply/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/views.py", line 138, in post
+    if Application.objects.filter(user_profile=user, vacancy=vacancy).exists():
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1528, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1342, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1319, in check_query_object_type
+    raise ValueError(
+ValueError: Cannot query "www": Must be "UserProfile" instance.
+ERROR 2024-12-10 14:57:05,669 basehttp "POST /api/vacancies/2/apply/ HTTP/1.1" 500 141319
+INFO 2024-12-10 14:59:48,738 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/views.py changed, reloading.
+INFO 2024-12-10 14:59:49,295 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-10 14:59:58,425 log Internal Server Error: /api/vacancies/2/apply/
+Traceback (most recent call last):
+  File "/home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/views.py", line 133, in post
+    user_profile = UserProfile.objects.get(user=request.user)
+                   ^^^^^^^^^^^
+NameError: name 'UserProfile' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/views.py", line 134, in post
+    except UserProfile.DoesNotExist:
+           ^^^^^^^^^^^
+NameError: name 'UserProfile' is not defined
+ERROR 2024-12-10 14:59:58,431 basehttp "POST /api/vacancies/2/apply/ HTTP/1.1" 500 98944
+INFO 2024-12-10 15:00:16,763 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/views.py changed, reloading.
+INFO 2024-12-10 15:00:17,350 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:00:20,671 basehttp "POST /api/vacancies/2/apply/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:00:20,684 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4724
+INFO 2024-12-10 15:00:23,305 basehttp "GET /api/vacancies/2/ HTTP/1.1" 200 5056
+INFO 2024-12-10 15:00:24,435 basehttp "POST /api/vacancies/2/apply/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:00:24,452 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4718
+INFO 2024-12-10 15:00:25,352 basehttp "GET /api/vacancies/4/ HTTP/1.1" 200 5044
+INFO 2024-12-10 15:00:26,064 basehttp "POST /api/vacancies/4/apply/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:00:26,080 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4724
+INFO 2024-12-10 15:00:27,293 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4392
+INFO 2024-12-10 15:00:31,529 basehttp "GET /home/ HTTP/1.1" 200 4283
+INFO 2024-12-10 15:00:32,048 basehttp "GET /api/seekers/profile/ HTTP/1.1" 200 4671
+INFO 2024-12-10 15:00:34,491 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4392
+INFO 2024-12-10 15:00:36,384 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:00:36,390 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-10 15:00:37,899 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 15:00:42,820 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:00:42,826 basehttp "GET /home/ HTTP/1.1" 200 4792
+INFO 2024-12-10 15:00:43,991 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4672
+INFO 2024-12-10 15:00:44,925 basehttp "GET /api/vacancies/4/ HTTP/1.1" 200 4842
+INFO 2024-12-10 15:00:46,185 basehttp "GET /api/companies/create/ HTTP/1.1" 200 5573
+INFO 2024-12-10 15:00:47,121 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4672
+INFO 2024-12-10 15:00:48,716 basehttp "GET /api/vacancies/4/ HTTP/1.1" 200 4842
+INFO 2024-12-10 15:02:58,185 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:02:58,188 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-10 15:02:59,576 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 15:03:03,443 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:03:03,448 basehttp "GET /home/ HTTP/1.1" 200 4593
+INFO 2024-12-10 15:03:04,233 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4392
+INFO 2024-12-10 15:03:05,163 basehttp "GET /api/vacancies/2/ HTTP/1.1" 200 5056
+INFO 2024-12-10 15:03:06,024 basehttp "POST /api/vacancies/2/apply/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:03:06,037 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4718
+INFO 2024-12-10 15:03:23,217 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:03:23,222 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-10 15:04:00,499 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 15:04:04,601 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:04:04,609 basehttp "GET /home/ HTTP/1.1" 200 4593
+WARNING 2024-12-10 15:04:09,517 log Not Found: /home/profile/applied-vacancies/
+WARNING 2024-12-10 15:04:09,517 basehttp "GET /home/profile/applied-vacancies/ HTTP/1.1" 404 3868
+WARNING 2024-12-10 15:04:14,713 log Not Found: /api/profile/applied-vacancies/
+WARNING 2024-12-10 15:04:14,714 basehttp "GET /api/profile/applied-vacancies/ HTTP/1.1" 404 3865
+ERROR 2024-12-10 15:04:25,818 log Internal Server Error: /api/seekers/profile/applied-vacancies/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/views.py", line 31, in get
+    applications = Application.objects.filter(profile=request.user.profile).select_related('vacancy')
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1491, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1303, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1768, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'profile' into field. Choices are: applied_on, id, user_profile, user_profile_id, vacancy, vacancy_id
+ERROR 2024-12-10 15:04:25,820 basehttp "GET /api/seekers/profile/applied-vacancies/ HTTP/1.1" 500 139149
+INFO 2024-12-10 15:05:12,532 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/views.py changed, reloading.
+INFO 2024-12-10 15:05:13,110 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:05:16,628 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/views.py changed, reloading.
+INFO 2024-12-10 15:05:17,173 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-10 15:05:18,909 log Internal Server Error: /api/seekers/profile/applied-vacancies/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'seekers'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/views.py", line 33, in get
+    return render(request, 'seekers/applied_vacancies.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'seekers' is not a registered namespace
+ERROR 2024-12-10 15:05:18,912 basehttp "GET /api/seekers/profile/applied-vacancies/ HTTP/1.1" 500 180829
+ERROR 2024-12-10 15:06:03,583 log Internal Server Error: /api/seekers/profile/applied-vacancies/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/views.py", line 33, in get
+    return render(request, 'seekers/applied_vacancies.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'profile_detail' not found. 'profile_detail' is not a valid view function or pattern name.
+ERROR 2024-12-10 15:06:03,585 basehttp "GET /api/seekers/profile/applied-vacancies/ HTTP/1.1" 500 178762
+INFO 2024-12-10 15:06:12,170 basehttp "GET /api/seekers/profile/applied-vacancies/ HTTP/1.1" 200 4364
+INFO 2024-12-10 15:06:16,624 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:06:16,632 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-10 15:06:17,904 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 15:06:24,910 basehttp "GET /api/users/register/ HTTP/1.1" 200 4325
+INFO 2024-12-10 15:06:26,953 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 15:06:36,898 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:06:36,905 basehttp "GET /home/ HTTP/1.1" 200 4595
+INFO 2024-12-10 15:06:38,555 basehttp "GET /api/seekers/profile/ HTTP/1.1" 200 5112
+INFO 2024-12-10 15:06:41,077 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4394
+INFO 2024-12-10 15:06:42,237 basehttp "GET /api/vacancies/2/ HTTP/1.1" 200 5058
+INFO 2024-12-10 15:06:43,219 basehttp "POST /api/vacancies/2/apply/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:06:43,235 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4726
+INFO 2024-12-10 15:06:51,502 basehttp "GET /api/seekers/profile/applied-vacancies/ HTTP/1.1" 200 4323
+INFO 2024-12-10 15:07:00,390 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:07:00,395 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-10 15:07:01,802 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 15:07:06,516 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:07:06,521 basehttp "GET /home/ HTTP/1.1" 200 4792
+INFO 2024-12-10 15:07:07,484 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4672
+INFO 2024-12-10 15:07:11,079 basehttp "GET /api/vacancies/2/ HTTP/1.1" 200 4854
+INFO 2024-12-10 15:07:14,533 basehttp "GET /api/vacancies/4/ HTTP/1.1" 200 4842
+INFO 2024-12-10 15:07:15,813 basehttp "GET /api/vacancies/4/update/ HTTP/1.1" 200 6844
+INFO 2024-12-10 15:07:18,949 basehttp "GET /api/vacancies/2/ HTTP/1.1" 200 4854
+INFO 2024-12-10 15:07:19,810 basehttp "GET /api/vacancies/2/update/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:07:19,822 basehttp "GET /api/vacancies/ HTTP/1.1" 200 5005
+INFO 2024-12-10 15:07:22,029 basehttp "GET /api/vacancies/4/ HTTP/1.1" 200 4842
+INFO 2024-12-10 15:11:42,773 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/views.py changed, reloading.
+INFO 2024-12-10 15:11:43,319 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:13:09,877 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/urls.py changed, reloading.
+INFO 2024-12-10 15:13:10,396 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:13:13,800 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/urls.py changed, reloading.
+INFO 2024-12-10 15:13:14,307 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:13:16,690 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/urls.py changed, reloading.
+INFO 2024-12-10 15:13:17,228 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-10 15:13:34,576 log Internal Server Error: /api/vacancies/manager/applications/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'application_detail' not found. 'application_detail' is not a valid view function or pattern name.
+ERROR 2024-12-10 15:13:34,579 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 500 191416
+ERROR 2024-12-10 15:14:11,627 log Internal Server Error: /api/vacancies/manager/applications/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'application_detail' not found. 'application_detail' is not a valid view function or pattern name.
+ERROR 2024-12-10 15:14:11,629 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 500 191591
+ERROR 2024-12-10 15:14:12,462 log Internal Server Error: /api/vacancies/manager/applications/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'application_detail' not found. 'application_detail' is not a valid view function or pattern name.
+ERROR 2024-12-10 15:14:12,464 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 500 191591
+ERROR 2024-12-10 15:14:18,088 log Internal Server Error: /api/vacancies/manager/applications/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'application_detail' not found. 'application_detail' is not a valid view function or pattern name.
+ERROR 2024-12-10 15:14:18,090 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 500 191591
+ERROR 2024-12-10 15:14:18,800 log Internal Server Error: /api/vacancies/manager/applications/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'application_detail' not found. 'application_detail' is not a valid view function or pattern name.
+ERROR 2024-12-10 15:14:18,802 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 500 191591
+ERROR 2024-12-10 15:14:33,220 log Internal Server Error: /api/vacancies/manager/applications/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'application_detail' not found. 'application_detail' is not a valid view function or pattern name.
+ERROR 2024-12-10 15:14:33,222 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 500 191591
+INFO 2024-12-10 15:14:47,200 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-10 15:14:49,509 log Internal Server Error: /api/vacancies/manager/applications/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'application_detail' not found. 'application_detail' is not a valid view function or pattern name.
+ERROR 2024-12-10 15:14:49,511 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 500 191591
+INFO 2024-12-10 15:15:11,128 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 5280
+INFO 2024-12-10 15:16:50,229 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 5753
+INFO 2024-12-10 15:17:18,501 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 5753
+INFO 2024-12-10 15:17:19,570 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 5753
+INFO 2024-12-10 15:17:25,352 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 5756
+INFO 2024-12-10 15:17:40,847 basehttp "GET /api/seekers/profile/ HTTP/1.1" 200 4870
+INFO 2024-12-10 15:17:44,572 basehttp "GET /api/seekers/profile/edit HTTP/1.1" 200 5834
+INFO 2024-12-10 15:18:14,362 basehttp "POST /api/seekers/profile/edit HTTP/1.1" 302 0
+INFO 2024-12-10 15:18:14,379 basehttp "GET /api/seekers/profile/ HTTP/1.1" 200 4903
+INFO 2024-12-10 15:18:19,297 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:18:19,305 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-10 15:18:20,855 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 15:18:25,044 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:18:25,052 basehttp "GET /home/ HTTP/1.1" 200 4593
+INFO 2024-12-10 15:18:26,422 basehttp "GET /api/seekers/profile/ HTTP/1.1" 200 4671
+INFO 2024-12-10 15:18:27,669 basehttp "GET /api/seekers/profile/edit HTTP/1.1" 200 5635
+INFO 2024-12-10 15:18:35,155 basehttp "POST /api/seekers/profile/edit HTTP/1.1" 302 0
+INFO 2024-12-10 15:18:35,166 basehttp "GET /api/seekers/profile/ HTTP/1.1" 200 4712
+INFO 2024-12-10 15:18:36,772 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:18:36,777 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-10 15:18:37,819 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-10 15:18:41,748 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:18:41,756 basehttp "GET /home/ HTTP/1.1" 200 4792
+INFO 2024-12-10 15:18:44,250 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4672
+INFO 2024-12-10 15:18:50,318 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 5812
+WARNING 2024-12-10 15:18:52,077 log Not Found: /resumes/Documentation_vLrmHns.odt
+WARNING 2024-12-10 15:18:52,077 basehttp "GET /resumes/Documentation_vLrmHns.odt HTTP/1.1" 404 3874
+INFO 2024-12-10 15:20:18,353 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/jumys/settings.py changed, reloading.
+INFO 2024-12-10 15:20:18,903 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:20:40,849 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/jumys/settings.py changed, reloading.
+INFO 2024-12-10 15:20:41,367 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:20:45,889 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/jumys/settings.py changed, reloading.
+INFO 2024-12-10 15:20:46,407 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-10 15:20:49,395 log Not Found: /resumes/Documentation_vLrmHns.odt
+WARNING 2024-12-10 15:20:49,395 basehttp "GET /resumes/Documentation_vLrmHns.odt HTTP/1.1" 404 3874
+WARNING 2024-12-10 15:20:50,282 log Not Found: /resumes/Documentation_vLrmHns.odt
+WARNING 2024-12-10 15:20:50,283 basehttp "GET /resumes/Documentation_vLrmHns.odt HTTP/1.1" 404 3874
+INFO 2024-12-10 15:21:07,520 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/jumys/urls.py changed, reloading.
+INFO 2024-12-10 15:21:08,080 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:21:24,911 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/jumys/urls.py changed, reloading.
+INFO 2024-12-10 15:21:25,426 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:21:29,276 basehttp "GET /resumes/Documentation_vLrmHns.odt HTTP/1.1" 200 28810
+INFO 2024-12-10 15:23:03,561 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/models.py changed, reloading.
+INFO 2024-12-10 15:23:04,142 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:23:10,533 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/models.py changed, reloading.
+INFO 2024-12-10 15:23:11,093 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:23:12,429 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/models.py changed, reloading.
+INFO 2024-12-10 15:23:12,962 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:23:18,340 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/models.py changed, reloading.
+INFO 2024-12-10 15:23:18,844 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:23:31,332 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/models.py changed, reloading.
+INFO 2024-12-10 15:23:31,878 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:23:38,256 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/models.py changed, reloading.
+INFO 2024-12-10 15:23:38,750 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:23:45,133 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/models.py changed, reloading.
+INFO 2024-12-10 15:23:45,652 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:23:48,143 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/seekers/models.py changed, reloading.
+INFO 2024-12-10 15:23:48,681 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-10 15:25:16,514 log Internal Server Error: /api/vacancies/manager/applications/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: seekers_application.reviewed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 326, in render
+    if match:
+       ^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 414, in __bool__
+    self._fetch_all()
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: seekers_application.reviewed
+ERROR 2024-12-10 15:25:16,518 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 500 235785
+INFO 2024-12-10 15:25:38,750 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:25:41,862 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 5932
+INFO 2024-12-10 15:27:15,563 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/views.py changed, reloading.
+INFO 2024-12-10 15:27:16,116 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:27:23,610 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/views.py changed, reloading.
+INFO 2024-12-10 15:27:24,199 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:27:32,829 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/urls.py changed, reloading.
+INFO 2024-12-10 15:27:33,380 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:27:35,783 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/urls.py changed, reloading.
+INFO 2024-12-10 15:27:36,290 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:27:41,773 autoreload /home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/urls.py changed, reloading.
+INFO 2024-12-10 15:27:42,309 autoreload Watching for file changes with StatReloader
+INFO 2024-12-10 15:28:03,402 basehttp "GET /resumes/Documentation_vLrmHns.odt HTTP/1.1" 304 0
+INFO 2024-12-10 15:28:05,631 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6659
+INFO 2024-12-10 15:28:08,639 basehttp "POST /api/vacancies/manager/applications/toggle-reviewed/2/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:28:08,659 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6660
+INFO 2024-12-10 15:29:26,925 basehttp "POST /api/vacancies/manager/applications/toggle-reviewed/2/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:29:26,938 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6659
+INFO 2024-12-10 15:29:27,831 basehttp "POST /api/vacancies/manager/applications/toggle-reviewed/2/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:29:27,849 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6660
+INFO 2024-12-10 15:29:28,340 basehttp "POST /api/vacancies/manager/applications/toggle-reviewed/2/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:29:28,359 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6659
+INFO 2024-12-10 15:29:28,808 basehttp "POST /api/vacancies/manager/applications/toggle-reviewed/2/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:29:28,831 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6660
+INFO 2024-12-10 15:29:29,338 basehttp "POST /api/vacancies/manager/applications/toggle-reviewed/2/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:29:29,357 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6659
+INFO 2024-12-10 15:29:30,122 basehttp "POST /api/vacancies/manager/applications/toggle-reviewed/2/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:29:30,137 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6660
+INFO 2024-12-10 15:29:31,329 basehttp "POST /api/vacancies/manager/applications/toggle-reviewed/2/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:29:31,346 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6659
+INFO 2024-12-10 15:29:32,162 basehttp "POST /api/vacancies/manager/applications/toggle-reviewed/2/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:29:32,181 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6660
+INFO 2024-12-10 15:29:33,387 basehttp "POST /api/vacancies/manager/applications/toggle-reviewed/2/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:29:33,406 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6659
+INFO 2024-12-10 15:29:34,736 basehttp "POST /api/vacancies/manager/applications/toggle-reviewed/2/ HTTP/1.1" 302 0
+INFO 2024-12-10 15:29:34,746 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6660
+INFO 2024-12-10 15:41:07,744 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6864
+INFO 2024-12-10 15:42:04,905 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6700
+INFO 2024-12-10 15:42:07,221 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4712
+INFO 2024-12-10 15:42:08,037 basehttp "GET /api/companies/create/ HTTP/1.1" 200 5613
+INFO 2024-12-10 15:42:08,720 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 6700
+INFO 2024-12-10 15:42:10,919 basehttp "GET /home/ HTTP/1.1" 200 4522
+INFO 2024-12-10 15:42:12,633 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4712
+INFO 2024-12-10 15:42:13,511 basehttp "GET /api/companies/create/ HTTP/1.1" 200 5613
+INFO 2024-12-10 15:42:14,068 basehttp "GET /home/ HTTP/1.1" 200 4522

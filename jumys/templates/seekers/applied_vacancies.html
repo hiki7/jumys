@@ -7,5 +7,5 @@
         <li>{{ application.vacancy.position_name.name }} at {{ application.vacancy.company.name }}</li>
     {% endfor %}
 </ul>
-<a href="{% url 'seekers:profile_detail' %}" class="btn btn-secondary">Back to Profile</a>
+<a href="{% url 'profile' %}" class="btn btn-secondary">Back to Profile</a>
 {% endblock %}

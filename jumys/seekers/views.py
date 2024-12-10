@@ -28,7 +28,7 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
 # Applied Vacancies View
 class UserAppliedVacanciesView(LoginRequiredMixin, View):
     def get(self, request):
-        applications = Application.objects.filter(profile=request.user.profile).select_related('vacancy')
+        applications = Application.objects.filter(user_profile=request.user.profile).select_related('vacancy')
         context = {'applications': applications}
         return render(request, 'seekers/applied_vacancies.html', context)
 

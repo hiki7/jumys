@@ -2,6 +2,8 @@
 
 from django.urls import path
 from .views import (
+    ManagerApplicationsView,
+    ToggleReviewedStatusView,
     VacancyListView,
     VacancyDetailView,
     VacancyCreateView,
@@ -19,4 +21,7 @@ urlpatterns = [
     path('<int:pk>/delete/', VacancyDeleteView.as_view(), name='vacancy_delete'),  # Delete vacancy
     path('<int:pk>/apply/', ApplyToVacancyView.as_view(), name='apply_to_vacancy'),  # Apply to vacancy
     path('<int:pk>/bookmark/', BookmarkVacancyView.as_view(), name='bookmark_vacancy'),  # Bookmark vacancy
+    path('manager/applications/', ManagerApplicationsView.as_view(), name='manager_applications'),
+    path('manager/applications/toggle-reviewed/<int:pk>/', ToggleReviewedStatusView.as_view(), name='toggle_reviewed'),
+
 ]

@@ -55,6 +55,7 @@ class Application(models.Model):
     user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='applications')
     vacancy = models.ForeignKey(Vacancy, on_delete=models.CASCADE)
     applied_on = models.DateTimeField(default=timezone.now)
+    reviewed = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user_profile.user.email} applied for {self.vacancy.position_name} at {self.vacancy.company.name}"

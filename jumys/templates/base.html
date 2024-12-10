@@ -71,16 +71,21 @@
             </li>
             {% if user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link link-light" href="{% url 'profile' %}"><i class="fas fa-user-circle"></i> Profile</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link link-light" href="{% url 'vacancy_list' %}"><i class="fas fa-user-circle"></i> vacancies</a>
               </li>
               {% if user.role == "hr" or user.role == "admin" %}
               <li class="nav-item">
                 <a class="nav-link link-light" href="{% url 'create_company' %}"><i class="fas fa-building"></i> Create Company</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link link-light" href="{% url 'manager_applications' %}"><i class="fas fa-building"></i> Manager Applications</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link link-light" href="{% url 'profile' %}"><i class="fas fa-user-circle"></i> Profile</a>
+              </li>
               {% endif %}
+              
               <li class="nav-item">
                 <a class="nav-link link-light logout-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                   <i class="fas fa-sign-out-alt"></i> Logout
