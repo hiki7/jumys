@@ -12,9 +12,18 @@ from .views import (
     ApplyToVacancyView,
     BookmarkVacancyView
 )
+from rest_framework.routers import DefaultRouter
+from .api_views import PositionViewSet, EmploymentTypeViewSet, TechnologyViewSet, VacancyViewSet
 
-urlpatterns = [
-    path('', VacancyListView.as_view(), name='vacancy_list'),  # List all vacancies
+router = DefaultRouter()
+router.register(r'positions', PositionViewSet, basename='position')
+router.register(r'employmenttypes', EmploymentTypeViewSet, basename='employmenttype')
+router.register(r'technologies', TechnologyViewSet, basename='technology')
+router.register(r'vacancies', VacancyViewSet, basename='vacancy')
+
+
+urlpatterns = router.urls + [
+    path('list/', VacancyListView.as_view(), name='vacancy_list'),  # List all vacancies
     path('create/', VacancyCreateView.as_view(), name='vacancy_create'),  # Create a new vacancy
     path('<int:pk>/', VacancyDetailView.as_view(), name='vacancy_detail'),  # Vacancy detail
     path('<int:pk>/update/', VacancyUpdateView.as_view(), name='vacancy_update'),  # Update vacancy

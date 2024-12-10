@@ -219,3 +219,310 @@ INFO 2024-12-11 00:03:59,603 basehttp "GET /api/analytics/vacancies/per-day/ HTT
 INFO 2024-12-11 00:03:59,714 basehttp "GET /resumes/analytics_charts/vacancies_per_day.png HTTP/1.1" 200 26250
 INFO 2024-12-11 00:04:11,615 basehttp "GET /api/analytics/vacancies/per-day/ HTTP/1.1" 200 4333
 INFO 2024-12-11 00:04:11,677 basehttp "GET /resumes/analytics_charts/vacancies_per_day.png HTTP/1.1" 200 26250
+INFO 2024-12-11 00:11:29,077 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:11:41,090 basehttp "GET / HTTP/1.1" 302 0
+INFO 2024-12-11 00:11:41,134 basehttp "GET /api/docs/swagger/ HTTP/1.1" 200 4653
+INFO 2024-12-11 00:11:41,384 basehttp "GET /api/schema/ HTTP/1.1" 200 9622
+INFO 2024-12-11 00:11:48,383 basehttp "GET /home/ HTTP/1.1" 200 4315
+WARNING 2024-12-11 00:11:49,356 log Not Found: /home.
+WARNING 2024-12-11 00:11:49,357 basehttp "GET /home. HTTP/1.1" 404 4118
+INFO 2024-12-11 00:11:51,393 basehttp "GET /home/ HTTP/1.1" 200 4315
+INFO 2024-12-11 00:11:55,562 basehttp "GET /api/seekers/profile/ HTTP/1.1" 200 5150
+INFO 2024-12-11 00:11:56,602 basehttp "GET /api/seekers/profile/abilities/ HTTP/1.1" 200 6569
+INFO 2024-12-11 00:11:58,676 basehttp "POST /api/seekers/profile/abilities/3/remove/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:11:58,692 basehttp "GET /api/seekers/profile/abilities/ HTTP/1.1" 200 6153
+INFO 2024-12-11 00:12:02,836 basehttp "GET /api/seekers/profile/ HTTP/1.1" 200 5105
+INFO 2024-12-11 00:12:04,631 basehttp "GET /api/seekers/profile/abilities/ HTTP/1.1" 200 6153
+INFO 2024-12-11 00:12:06,322 basehttp "GET /api/seekers/profile/work-experience/ HTTP/1.1" 200 7229
+INFO 2024-12-11 00:12:19,568 basehttp "GET /api/analytics/ HTTP/1.1" 200 4677
+INFO 2024-12-11 00:12:21,030 basehttp "GET /api/analytics/users/role-distribution/ HTTP/1.1" 200 4325
+INFO 2024-12-11 00:12:21,183 basehttp "GET /resumes/analytics_charts/user_role_distribution.png HTTP/1.1" 200 10072
+INFO 2024-12-11 00:13:03,153 basehttp "GET /api/analytics/users/role-distribution/ HTTP/1.1" 200 4325
+INFO 2024-12-11 00:13:03,220 basehttp "GET /resumes/analytics_charts/user_role_distribution.png HTTP/1.1" 200 10072
+INFO 2024-12-11 00:13:04,949 basehttp "GET /api/analytics/vacancies/applications/ HTTP/1.1" 200 4344
+INFO 2024-12-11 00:13:05,000 basehttp "GET /resumes/analytics_charts/applications_per_vacancy.png HTTP/1.1" 200 16155
+INFO 2024-12-11 00:13:06,082 basehttp "GET /api/analytics/vacancies/per-day/ HTTP/1.1" 200 4333
+INFO 2024-12-11 00:13:06,133 basehttp "GET /resumes/analytics_charts/vacancies_per_day.png HTTP/1.1" 200 26250
+INFO 2024-12-11 00:29:27,734 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:29:32,195 basehttp "GET / HTTP/1.1" 302 0
+INFO 2024-12-11 00:29:32,217 basehttp "GET /api/schema/swagger-ui/ HTTP/1.1" 200 4653
+INFO 2024-12-11 00:29:32,480 basehttp "GET /api/schema/ HTTP/1.1" 200 9622
+INFO 2024-12-11 00:33:35,049 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py changed, reloading.
+INFO 2024-12-11 00:33:36,597 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:34:26,136 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py changed, reloading.
+INFO 2024-12-11 00:34:27,483 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:34:37,368 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\urls.py changed, reloading.
+INFO 2024-12-11 00:34:38,654 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:35:22,614 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\seekers\urls.py changed, reloading.
+INFO 2024-12-11 00:35:23,977 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:36:14,690 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\vacancies\urls.py changed, reloading.
+INFO 2024-12-11 00:36:16,026 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:36:22,768 basehttp "GET /api/schema/swagger-ui/ HTTP/1.1" 200 4653
+INFO 2024-12-11 00:36:22,914 basehttp "GET /api/schema/ HTTP/1.1" 200 9622
+INFO 2024-12-11 00:36:39,274 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:36:42,612 basehttp "GET / HTTP/1.1" 302 0
+INFO 2024-12-11 00:36:42,635 basehttp "GET /api/schema/swagger-ui/ HTTP/1.1" 200 4653
+INFO 2024-12-11 00:36:42,887 basehttp "GET /api/schema/ HTTP/1.1" 200 9622
+INFO 2024-12-11 00:37:40,808 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\jumys\urls.py changed, reloading.
+INFO 2024-12-11 00:37:42,215 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:37:46,459 basehttp "GET /api/schema/swagger-ui/ HTTP/1.1" 200 4653
+INFO 2024-12-11 00:37:46,605 basehttp "GET /api/schema/ HTTP/1.1" 200 9622
+INFO 2024-12-11 00:38:17,835 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\jumys\settings.py changed, reloading.
+INFO 2024-12-11 00:38:19,198 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:38:43,285 basehttp "GET /api/schema/swagger-ui/ HTTP/1.1" 200 4681
+INFO 2024-12-11 00:38:43,422 basehttp "GET /api/schema/ HTTP/1.1" 200 9679
+INFO 2024-12-11 00:40:08,005 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\urls.py changed, reloading.
+INFO 2024-12-11 00:40:09,411 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:40:11,751 basehttp "GET /api/schema/swagger-ui/ HTTP/1.1" 200 4681
+INFO 2024-12-11 00:40:11,926 basehttp "GET /api/schema/ HTTP/1.1" 200 65860
+INFO 2024-12-11 00:40:48,993 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\seekers\urls.py changed, reloading.
+INFO 2024-12-11 00:40:50,297 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:41:11,078 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\vacancies\urls.py changed, reloading.
+INFO 2024-12-11 00:41:12,447 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:41:14,037 basehttp "GET /api/schema/swagger-ui/ HTTP/1.1" 200 4681
+INFO 2024-12-11 00:41:14,277 basehttp "GET /api/schema/ HTTP/1.1" 200 163141
+INFO 2024-12-11 00:41:53,959 basehttp "GET /api/schema/swagger-ui/ HTTP/1.1" 200 4681
+INFO 2024-12-11 00:41:54,169 basehttp "GET /api/schema/ HTTP/1.1" 200 163141
+INFO 2024-12-11 00:42:43,074 basehttp "POST /api/users/api/token/ HTTP/1.1" 200 526
+INFO 2024-12-11 00:43:14,892 basehttp "GET /api/seekers/abilities/ HTTP/1.1" 200 290
+INFO 2024-12-11 00:52:24,404 basehttp "GET /api/seekers/profile/ HTTP/1.1" 200 5105
+INFO 2024-12-11 00:52:27,838 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:52:27,845 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-11 00:52:29,077 basehttp "GET /api/users/register/ HTTP/1.1" 200 4325
+INFO 2024-12-11 00:52:35,024 basehttp "POST /api/users/register/ HTTP/1.1" 200 4633
+INFO 2024-12-11 00:52:44,513 basehttp "POST /api/users/register/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:52:44,523 basehttp "GET /api/users/login/ HTTP/1.1" 200 4537
+INFO 2024-12-11 00:52:49,837 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:52:49,851 basehttp "GET /home/ HTTP/1.1" 200 4623
+INFO 2024-12-11 00:52:50,987 basehttp "GET /api/seekers/profile/ HTTP/1.1" 200 4701
+INFO 2024-12-11 00:52:52,269 basehttp "GET /api/seekers/profile/abilities/ HTTP/1.1" 200 5314
+INFO 2024-12-11 00:53:05,803 basehttp "POST /api/seekers/profile/abilities/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:53:05,820 basehttp "GET /api/seekers/profile/abilities/ HTTP/1.1" 200 5734
+INFO 2024-12-11 00:53:16,798 basehttp "POST /api/seekers/profile/abilities/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:53:16,812 basehttp "GET /api/seekers/profile/abilities/ HTTP/1.1" 200 6153
+INFO 2024-12-11 00:53:22,368 basehttp "GET /api/vacancies/ HTTP/1.1" 200 5866
+INFO 2024-12-11 00:53:31,148 basehttp "GET /home/ HTTP/1.1" 200 4313
+INFO 2024-12-11 00:53:31,745 basehttp "GET /api/vacancies/ HTTP/1.1" 200 5866
+INFO 2024-12-11 00:53:59,572 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\vacancies\urls.py changed, reloading.
+INFO 2024-12-11 00:54:00,989 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:54:04,373 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\vacancies\urls.py changed, reloading.
+INFO 2024-12-11 00:54:05,623 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:54:07,185 basehttp "GET /api/vacancies/list HTTP/1.1" 301 0
+INFO 2024-12-11 00:54:07,229 basehttp "GET /api/vacancies/list/ HTTP/1.1" 200 4427
+INFO 2024-12-11 00:54:09,488 basehttp "GET /api/vacancies/2/ HTTP/1.1" 200 5091
+INFO 2024-12-11 00:54:12,432 basehttp "POST /api/vacancies/2/apply/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:54:12,447 basehttp "GET /api/vacancies/list/ HTTP/1.1" 200 4759
+INFO 2024-12-11 00:54:14,019 basehttp "GET /api/vacancies/4/ HTTP/1.1" 200 5079
+INFO 2024-12-11 00:54:14,876 basehttp "POST /api/vacancies/4/apply/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:54:14,896 basehttp "GET /api/vacancies/list/ HTTP/1.1" 200 4759
+INFO 2024-12-11 00:54:17,095 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:54:17,101 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-11 00:54:20,658 basehttp "GET /api/users/register/ HTTP/1.1" 200 4325
+INFO 2024-12-11 00:54:29,702 basehttp "POST /api/users/register/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:54:29,710 basehttp "GET /api/users/login/ HTTP/1.1" 200 4537
+INFO 2024-12-11 00:54:31,191 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-11 00:54:35,853 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:54:35,863 basehttp "GET /home/ HTTP/1.1" 200 4837
+INFO 2024-12-11 00:54:37,687 basehttp "GET /api/companies/create/ HTTP/1.1" 200 5618
+INFO 2024-12-11 00:55:47,982 basehttp "POST /api/companies/create/ HTTP/1.1" 200 5805
+INFO 2024-12-11 00:55:54,405 basehttp "POST /api/companies/create/ HTTP/1.1" 200 5805
+INFO 2024-12-11 00:56:05,999 basehttp "POST /api/companies/create/ HTTP/1.1" 200 5808
+INFO 2024-12-11 00:56:53,755 basehttp "POST /api/companies/create/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:56:53,789 basehttp "GET /api/companies/6/ HTTP/1.1" 200 7027
+INFO 2024-12-11 00:56:59,076 basehttp "GET /api/companies/6/edit/ HTTP/1.1" 200 5821
+INFO 2024-12-11 00:57:08,681 basehttp "POST /api/companies/6/edit/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:57:08,699 basehttp "GET /api/companies/6/ HTTP/1.1" 200 7029
+INFO 2024-12-11 00:57:13,842 basehttp "POST /api/companies/6/add_manager/ HTTP/1.1" 200 6210
+INFO 2024-12-11 00:57:41,881 basehttp "POST /api/companies/6/add_manager/ HTTP/1.1" 302 0
+INFO 2024-12-11 00:57:41,895 basehttp "GET /api/companies/6/ HTTP/1.1" 200 7297
+INFO 2024-12-11 00:57:50,090 basehttp "GET /api/vacancies/list/ HTTP/1.1" 200 4717
+INFO 2024-12-11 00:57:51,121 basehttp "GET /api/vacancies/create/ HTTP/1.1" 200 6861
+INFO 2024-12-11 01:01:05,232 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 4950
+INFO 2024-12-11 01:01:41,446 basehttp "GET /api/vacancies/list/ HTTP/1.1" 200 4717
+INFO 2024-12-11 01:01:43,076 basehttp "GET /api/companies/create/ HTTP/1.1" 200 5618
+INFO 2024-12-11 01:01:46,090 basehttp "GET /api/vacancies/list/ HTTP/1.1" 200 4717
+INFO 2024-12-11 01:01:47,748 basehttp "GET /home/ HTTP/1.1" 200 4527
+WARNING 2024-12-11 01:02:37,721 log Not Found: /api/core/
+WARNING 2024-12-11 01:02:37,723 basehttp "GET /api/core/ HTTP/1.1" 404 4137
+INFO 2024-12-11 01:02:41,814 basehttp "GET /api/companies/6/ HTTP/1.1" 200 6980
+INFO 2024-12-11 01:04:43,961 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 4950
+INFO 2024-12-11 01:06:54,142 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 4615
+ERROR 2024-12-11 01:08:20,449 log Internal Server Error: /api/vacancies/manager/applications/
+Traceback (most recent call last):
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'company_detail' with no arguments not found. 1 pattern(s) tried: ['api/companies/(?P<pk>[0-9]+)/\\Z']
+ERROR 2024-12-11 01:08:20,462 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 500 175903
+INFO 2024-12-11 01:11:46,456 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py changed, reloading.
+INFO 2024-12-11 01:11:48,050 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 01:12:35,436 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\urls.py changed, reloading.
+INFO 2024-12-11 01:12:36,901 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 01:13:02,422 basehttp "GET /api/companies/6/ HTTP/1.1" 200 7158
+ERROR 2024-12-11 01:13:10,276 log Internal Server Error: /api/companies/list/
+Traceback (most recent call last):
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py", line 148, in get
+    companies = Company.objects.filter(
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\db\models\query.py", line 485, in __or__
+    combined.query.combine(other.query, sql.OR)
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\db\models\sql\query.py", line 688, in combine
+    raise TypeError("Cannot combine a unique query with a non-unique query.")
+TypeError: Cannot combine a unique query with a non-unique query.
+ERROR 2024-12-11 01:13:10,284 basehttp "GET /api/companies/list/ HTTP/1.1" 500 96952
+INFO 2024-12-11 01:13:33,104 basehttp "GET /home/ HTTP/1.1" 200 4707
+ERROR 2024-12-11 01:13:34,837 log Internal Server Error: /api/companies/list/
+Traceback (most recent call last):
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py", line 148, in get
+    companies = Company.objects.filter(
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\db\models\query.py", line 485, in __or__
+    combined.query.combine(other.query, sql.OR)
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\db\models\sql\query.py", line 688, in combine
+    raise TypeError("Cannot combine a unique query with a non-unique query.")
+TypeError: Cannot combine a unique query with a non-unique query.
+ERROR 2024-12-11 01:13:34,843 basehttp "GET /api/companies/list/ HTTP/1.1" 500 96941
+INFO 2024-12-11 01:14:30,036 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py changed, reloading.
+INFO 2024-12-11 01:14:31,611 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 01:14:36,064 basehttp "GET /api/companies/list/ HTTP/1.1" 200 4846
+INFO 2024-12-11 01:14:40,896 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-11 01:14:40,904 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-11 01:14:42,557 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-11 01:14:48,099 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-11 01:14:48,110 basehttp "GET /home/ HTTP/1.1" 200 5027
+INFO 2024-12-11 01:14:50,678 basehttp "GET /api/companies/list/ HTTP/1.1" 200 5453
+INFO 2024-12-11 01:15:06,811 basehttp "GET /api/companies/6/ HTTP/1.1" 200 5810
+INFO 2024-12-11 01:15:17,379 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-11 01:15:17,385 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-11 01:15:18,630 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-11 01:15:24,740 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-11 01:15:24,753 basehttp "GET /home/ HTTP/1.1" 200 5017
+INFO 2024-12-11 01:15:26,082 basehttp "GET /api/companies/list/ HTTP/1.1" 200 4846
+INFO 2024-12-11 01:15:27,604 basehttp "GET /api/companies/6/ HTTP/1.1" 200 7160
+INFO 2024-12-11 01:15:31,484 basehttp "GET /home/ HTTP/1.1" 200 4707
+INFO 2024-12-11 01:15:35,661 basehttp "GET /api/vacancies/manager/applications/ HTTP/1.1" 200 4795
+INFO 2024-12-11 01:15:37,929 basehttp "GET /api/companies/create/ HTTP/1.1" 200 5798
+INFO 2024-12-11 01:15:38,854 basehttp "GET /api/vacancies/list/ HTTP/1.1" 200 4897
+INFO 2024-12-11 01:15:39,707 basehttp "GET /home/ HTTP/1.1" 200 4707
+INFO 2024-12-11 01:15:41,277 basehttp "POST /api/users/logout/ HTTP/1.1" 302 0
+INFO 2024-12-11 01:15:41,284 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-11 01:15:42,764 basehttp "GET /home/ HTTP/1.1" 200 3474
+INFO 2024-12-11 01:15:43,896 basehttp "GET /api/users/login/ HTTP/1.1" 200 4226
+INFO 2024-12-11 01:15:52,160 basehttp "POST /api/users/login/ HTTP/1.1" 302 0
+INFO 2024-12-11 01:15:52,175 basehttp "GET /home/ HTTP/1.1" 200 5017
+INFO 2024-12-11 01:15:57,252 basehttp "GET /api/companies/list/ HTTP/1.1" 200 4846
+INFO 2024-12-11 01:15:58,475 basehttp "GET /api/companies/6/ HTTP/1.1" 200 7160
+INFO 2024-12-11 01:15:59,469 basehttp "POST /api/companies/6/add_manager/ HTTP/1.1" 200 6390
+INFO 2024-12-11 01:20:30,981 basehttp "POST /api/companies/6/add_manager/ HTTP/1.1" 200 6390
+INFO 2024-12-11 01:20:35,150 basehttp "POST /api/companies/6/add_manager/ HTTP/1.1" 200 6390
+INFO 2024-12-11 01:21:24,997 basehttp "POST /api/companies/6/add_manager/ HTTP/1.1" 200 6399
+INFO 2024-12-11 01:22:17,900 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py changed, reloading.
+INFO 2024-12-11 01:22:19,383 autoreload Watching for file changes with StatReloader
+ERROR 2024-12-11 01:22:21,074 log Internal Server Error: /api/companies/6/add_manager/
+Traceback (most recent call last):
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\KogSa\AppData\Local\pypoetry\Cache\virtualenvs\jumys-Y4X2CG5X-py3.12\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view companies.views.view didn't return an HttpResponse object. It returned None instead.
+ERROR 2024-12-11 01:22:21,077 basehttp "POST /api/companies/6/add_manager/ HTTP/1.1" 500 74831
+INFO 2024-12-11 01:22:31,505 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\companies\views.py changed, reloading.
+INFO 2024-12-11 01:22:32,903 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 01:22:34,574 basehttp "POST /api/companies/6/add_manager/ HTTP/1.1" 200 5681
+INFO 2024-12-11 01:22:39,514 basehttp "GET /api/companies/list/ HTTP/1.1" 200 4846
+INFO 2024-12-11 01:22:43,619 basehttp "GET /home/ HTTP/1.1" 200 4707
