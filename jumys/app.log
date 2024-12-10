@@ -8620,3 +8620,65 @@ INFO 2024-12-10 15:42:10,919 basehttp "GET /home/ HTTP/1.1" 200 4522
 INFO 2024-12-10 15:42:12,633 basehttp "GET /api/vacancies/ HTTP/1.1" 200 4712
 INFO 2024-12-10 15:42:13,511 basehttp "GET /api/companies/create/ HTTP/1.1" 200 5613
 INFO 2024-12-10 15:42:14,068 basehttp "GET /home/ HTTP/1.1" 200 4522
+INFO 2024-12-10 18:27:01,591 autoreload Watching for file changes with StatReloader
+WARNING 2024-12-10 18:27:27,835 log Not Found: /accounts/login/
+WARNING 2024-12-10 18:27:30,241 log Not Found: /accounts/login/
+WARNING 2024-12-10 18:27:32,651 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 18:29:54,700 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:03:57,579 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:17:46,367 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:28:57,162 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:29:52,619 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:30:21,507 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:31:37,253 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:32:01,127 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:32:16,167 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:32:35,437 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:32:42,892 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:33:11,033 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:33:33,599 log Not Found: /api/companies/999/add_manager/
+WARNING 2024-12-10 19:43:47,553 log Not Found: /api/companies/999/add_manager/
+ERROR 2024-12-10 19:57:32,433 log Internal Server Error: /api/vacancies/1/bookmark/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/views.py", line 165, in post
+    if vacancy.bookmarked_by.filter(id=user.id).exists():
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Vacancy' object has no attribute 'bookmarked_by'. Did you mean: 'bookmarked_users'?
+ERROR 2024-12-10 20:03:13,947 log Internal Server Error: /api/vacancies/1/bookmark/
+Traceback (most recent call last):
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/.cache/pypoetry/virtualenvs/jumys2-vHB6Wsnz-py3.12/lib/python3.12/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daniyal/Documents/Projects/Django/jumys2/jumys/vacancies/views.py", line 165, in post
+    if vacancy.bookmarked_by.filter(id=user.id).exists():
+       ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Vacancy' object has no attribute 'bookmarked_by'. Did you mean: 'bookmarked_users'?
+WARNING 2024-12-10 20:07:47,798 log Unauthorized: /api/users/api/token/
+WARNING 2024-12-10 20:08:19,826 log Unauthorized: /api/users/api/token/
