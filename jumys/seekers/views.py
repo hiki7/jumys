@@ -9,11 +9,9 @@ from django.views.generic.edit import UpdateView
 
 # User Profile Detail View
 class UserProfileDetailView(LoginRequiredMixin, View):
-    def get(self, request):
-        profile = request.user.profile
-        form = UserProfileForm(instance=profile)
-        context = {'profile': profile, 'form': form}
-        return render(request, 'seekers/profile.html', context)
+    def get(self, request, user_id):
+        profile = get_object_or_404(UserProfile, user_id=user_id)
+        return render(request, 'seekers/profile.html', {'profile': profile})
 
 class EditProfileView(LoginRequiredMixin, UpdateView):
     model = UserProfile

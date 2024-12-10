@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>All Seekers</h1>
+<ul class="list-group">
+    {% for seeker in seekers %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{% url 'profile' seeker.id %}" class="text-decoration-none">
+            {{ seeker.username }} ({{ seeker.email }})
+        </a>
+        <button
+            class="btn btn-sm btn-outline-primary follow-btn"
+            data-id="{{ seeker.id }}">
+            {% if seeker.is_following %}
+                Unfollow
+            {% else %}
+                Follow
+            {% endif %}
+        </button>
+    </li>
+    {% endfor %}
+</ul>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.follow-btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const userId = this.getAttribute('data-id');
+                fetch("{% url 'follow_user' 0 %}".replace('0', userId), {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        this.textContent = this.textContent === 'Follow' ? 'Unfollow' : 'Follow';
+                    } else {
+                        alert(data.error);
+                    }
+                });
+            });
+        });
+    });
+</script>
+{% endblock %}

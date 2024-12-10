@@ -2,10 +2,14 @@
 
 {% block content %}
 <h1>Followers</h1>
-<ul>
+<ul class="list-group">
     {% for follower in followers %}
-        <li>{{ follower.follower.username }}</li>
+    <li class="list-group-item">
+        <a href="{% url 'profile' follower.follower.id %}">
+            {{ follower.follower.username }}
+        </a>
+    </li>
     {% endfor %}
 </ul>
-<a href="{% url 'profile' %}" class="btn btn-secondary">Back to Profile</a>
+<a href="{% url 'profile' user_id %}" class="btn btn-secondary mt-3">Back to Profile</a>
 {% endblock %}

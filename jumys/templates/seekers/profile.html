@@ -12,6 +12,8 @@
     {% endif %}
 </p>
 
+<h2><a href="{% url 'followers_list' profile.user.id %}">Followers</a></h2>
+
 <h2>Abilities</h2>
 <ul>
     {% for ability in user.profile.abilities.all %}

@@ -8,6 +8,7 @@ from .views import (
     ReferenceLetterListView,
     RequestReferenceView,
     ManageReferenceRequestView,
+    ListSeekersView
 )
 
 urlpatterns = [
@@ -24,4 +25,5 @@ urlpatterns = [
     path('references/list/', ReferenceLetterListView.as_view(), name='reference_letters_list'),
     path('references/request/<int:user_id>/', RequestReferenceView.as_view(), name='request_reference'),
     path('references/manage/<int:reference_id>/<str:action>/', ManageReferenceRequestView.as_view(), name='manage_reference'),
+    path('seekers/', ListSeekersView.as_view(), name='list_seekers'),
 ]
