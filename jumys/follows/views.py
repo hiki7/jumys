@@ -189,20 +189,21 @@ class ManageReferenceRequestView(LoginRequiredMixin, View):
 # List All Seekers
 class ListSeekersView(LoginRequiredMixin, View):
     def get(self, request):
-        seekers = CustomUser.objects.filter(role="seeker").select_related('profile')
-        seekers_with_connection_state = [
+        seekers = CustomUser.objects.filter(role="seeker").exclude(id=request.user.id).select_related('profile')
+        seekers_with_follow_and_connection_state = [
             {
                 'id': seeker.id,
                 'username': seeker.username,
                 'email': seeker.email,
                 'is_following': request.user.following.filter(followee=seeker).exists(),
                 'is_connected': Connection.objects.filter(
-                    Q(sender=request.user, receiver=seeker, status='accepted') |
-                    Q(sender=seeker, receiver=request.user, status='accepted')
+                    (Q(sender=request.user, receiver=seeker) | Q(sender=seeker, receiver=request.user)) &
+                    Q(status='accepted')
                 ).exists(),
             }
             for seeker in seekers
         ]
-        return render(request, 'follows/list_seekers.html', {'seekers': seekers_with_connection_state})
+        return render(request, 'follows/list_seekers.html', {'seekers': seekers_with_follow_and_connection_state})
+
 
 
