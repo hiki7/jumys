@@ -214,3 +214,8 @@ ERROR 2024-12-10 23:58:52,001 basehttp "GET /api/analytics/vacancies/per-day/ HT
 INFO 2024-12-11 00:01:30,407 autoreload C:\Users\KogSa\OneDrive\Рабочий стол\projects\DjangoFall2024\Rroject\jumys\jumys\vacancies\models.py changed, reloading.
 INFO 2024-12-11 00:01:31,541 autoreload Watching for file changes with StatReloader
 INFO 2024-12-11 00:03:55,308 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 00:03:58,446 basehttp "GET /api/analytics/ HTTP/1.1" 200 4677
+INFO 2024-12-11 00:03:59,603 basehttp "GET /api/analytics/vacancies/per-day/ HTTP/1.1" 200 4333
+INFO 2024-12-11 00:03:59,714 basehttp "GET /resumes/analytics_charts/vacancies_per_day.png HTTP/1.1" 200 26250
+INFO 2024-12-11 00:04:11,615 basehttp "GET /api/analytics/vacancies/per-day/ HTTP/1.1" 200 4333
+INFO 2024-12-11 00:04:11,677 basehttp "GET /resumes/analytics_charts/vacancies_per_day.png HTTP/1.1" 200 26250
