@@ -1,11 +1,17 @@
-from django.shortcuts import render
+# views.py
+
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib import messages
 from rest_framework import generics, permissions
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .models import CustomUser
-from .serializers import CustomTokenObtainPairSerializer, UserSerializer
+from rest_framework.exceptions import ValidationError
 from drf_spectacular.utils import extend_schema, OpenApiParameter
 from drf_spectacular.types import OpenApiTypes
-from rest_framework.exceptions import ValidationError
+
+from .serializers import CustomTokenObtainPairSerializer, UserSerializer
+
+User = get_user_model()  # Get the custom user model
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
@@ -13,8 +19,29 @@ class CustomTokenObtainPairView(TokenObtainPairView):
     @extend_schema(
         description="Obtain a pair of JWT tokens (access and refresh)",
         request=CustomTokenObtainPairSerializer,
-        responses={200: {"description": "JWT Tokens", "content": {"application/json": {"example": {"access": "your-access-token", "refresh": "your-refresh-token"}}}},
-        400: {"description": "Validation Error", "content": {"application/json": {"example": {"detail": "Invalid credentials"}}}}},
+        responses={
+            200: {
+                "description": "JWT Tokens",
+                "content": {
+                    "application/json": {
+                        "example": {
+                            "access": "your-access-token",
+                            "refresh": "your-refresh-token"
+                        }
+                    }
+                }
+            },
+            400: {
+                "description": "Validation Error",
+                "content": {
+                    "application/json": {
+                        "example": {
+                            "detail": "Invalid credentials"
+                        }
+                    }
+                }
+            }
+        },
         parameters=[
             OpenApiParameter(
                 name="username",
@@ -35,7 +62,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 
 
 class RegisterView(generics.CreateAPIView):
-    queryset = CustomUser.objects.all()
+    queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
 
@@ -87,3 +114,39 @@ class RegisterView(generics.CreateAPIView):
         if role not in ['seeker', 'hr']:
             raise ValidationError({'role': 'Role must be either "seeker" or "hr"'})
         return super().post(request, *args, **kwargs)
+    
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Logged in successfully!')
+            return redirect('home')
+        else:
+            messages.error(request, 'Invalid credentials')
+    return render(request, 'users/login.html', {'title': 'Login'})
+
+
+def register_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        role = request.POST.get('role')  # Get role from form
+
+        if not username or not password or not role:
+            messages.error(request, 'Please fill out all fields, including role.')
+        else:
+            if role not in ['seeker', 'hr']:
+                messages.error(request, 'Invalid role selected.')
+            else:
+                if User.objects.filter(username=username).exists():
+                    messages.error(request, 'Username already taken.')
+                else:
+                    User.objects.create_user(username=username, password=password, role=role)
+                    messages.success(request, 'Registered successfully!')
+                    return redirect('login')
+
+    return render(request, 'users/register.html', {'title': 'Register'})

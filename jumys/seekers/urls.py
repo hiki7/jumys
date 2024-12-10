@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import (
     UserProfileDetailView,
+    EditProfileView,
     UserAppliedVacanciesView,
     UserBookmarkedVacanciesView,
     UserAbilitiesView,
@@ -10,24 +11,25 @@ from .views import (
 )
 
 urlpatterns = [
-    path('profile/', UserProfileDetailView.as_view(), name='user_profile'),
-    path('profile/applied-vacancies/', UserAppliedVacanciesView.as_view(), name='user_applied_vacancies'),
-    path('profile/bookmarked-vacancies/', UserBookmarkedVacanciesView.as_view(), name='user_bookmarked_vacancies'),
+    path('profile/', UserProfileDetailView.as_view(), name='profile'),
+    path('profile/edit', EditProfileView.as_view(), name='profile_edit'),
+    path('profile/applied-vacancies/', UserAppliedVacanciesView.as_view(), name='applied_vacancies'),
+    path('profile/bookmarked-vacancies/', UserBookmarkedVacanciesView.as_view(), name='bookmarked_vacancies'),
     path(
         'profile/bookmarked-vacancies/<int:vacancy_id>/',
         UserBookmarkedVacanciesView.as_view(),
-        name='user_unbookmark_vacancy'
+        name='unbookmark_vacancy'
     ),
-    path('profile/abilities/', UserAbilitiesView.as_view(), name='user_abilities'),
+    path('profile/abilities/', UserAbilitiesView.as_view(), name='abilities'),
     path(
         'profile/abilities/<int:ability_id>/remove/',
         RemoveAbilityView.as_view(),
-        name='user_remove_ability'
+        name='remove_ability'
     ),
-    path('profile/work-experience/', UserWorkExperienceView.as_view(), name='user_work_experience'),
+    path('profile/work-experience/', UserWorkExperienceView.as_view(), name='work_experience'),
     path(
         'profile/work-experience/<int:pk>/',
         ManageWorkExperienceView.as_view(),
-        name='user_manage_work_experience'
+        name='manage_work_experience'
     ),
 ]

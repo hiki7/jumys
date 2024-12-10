@@ -71,9 +71,6 @@
             </li>
             {% if user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link link-light" href="{% url 'post' %}"><i class="fas fa-edit"></i> Post</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link link-light" href="{% url 'profile' %}"><i class="fas fa-user-circle"></i> Profile</a>
               </li>
               {% if user.role == "hr" or user.role == "admin" %}

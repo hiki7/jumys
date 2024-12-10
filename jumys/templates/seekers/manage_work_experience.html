@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Edit Profile</h1>
-<form method="post" enctype="multipart/form-data">
+<h1>Edit Work Experience</h1>
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">Save Changes</button>
 </form>
-<a href="{% url 'seekers:profile_detail' %}" class="btn btn-secondary">Cancel</a>
+<a href="{% url 'work_experience' %}" class="btn btn-secondary mt-3">Cancel</a>
 {% endblock %}

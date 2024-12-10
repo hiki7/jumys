@@ -23,14 +23,16 @@ from drf_spectacular.views import (
 )
 from django.views.generic import RedirectView
 
+from .views import home_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),
     path('api/seekers/', include('seekers.urls')),
-    #path('api/companies/', include('companies.urls')),
+    path('api/companies/', include('companies.urls')),
     path('api/vacancies/', include('vacancies.urls')),
     path('api/follows/', include('follows.urls')),
-    path('api/core/', include('core.urls')),
+    path('home/', home_view, name='home'),
     # path('api/analytics/', include('analytics.urls')),
 
     ### Swagge
