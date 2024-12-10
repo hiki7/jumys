@@ -22,11 +22,11 @@
         <div class="form-group">
             <label for="id_user">Select Manager(s):</label>
             {{ form.user }}  <!-- No need to pass attrs here since they're defined in the form -->
-            {% if form.user.errors %}
+            <!-- {% if form.user.errors %}
                 <div class="text-danger">
                     {{ form.user.errors }}
                 </div>
-            {% endif %}
+            {% endif %} -->
         </div>
         <button type="submit" class="btn btn-primary">Add Manager</button>
         <a href="{% url 'company_detail' company.pk %}" class="btn btn-secondary">Cancel</a>

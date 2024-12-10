@@ -11,7 +11,17 @@ from .views import (
     DeleteWorkExperienceView
 )
 
-urlpatterns = [
+from rest_framework.routers import DefaultRouter
+from .api_views import AbilityViewSet, UserProfileViewSet, WorkExperienceViewSet, ApplicationViewSet
+
+router = DefaultRouter()
+router.register(r'abilities', AbilityViewSet, basename='ability')
+router.register(r'userprofiles', UserProfileViewSet, basename='userprofile')
+router.register(r'workexperiences', WorkExperienceViewSet, basename='workexperience')
+router.register(r'applications', ApplicationViewSet, basename='application')
+
+
+urlpatterns = router.urls +[
     path('profile/', UserProfileDetailView.as_view(), name='profile'),
     path('profile/edit', EditProfileView.as_view(), name='profile_edit'),
     path('profile/applied-vacancies/', UserAppliedVacanciesView.as_view(), name='applied_vacancies'),

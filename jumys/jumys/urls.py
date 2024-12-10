@@ -1,19 +1,3 @@
-"""
-URL configuration for jumys project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import (
@@ -22,34 +6,32 @@ from drf_spectacular.views import (
     SpectacularRedocView,
 )
 from django.views.generic import RedirectView
-
 from .views import home_view
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # Include API endpoints
     path('api/users/', include('users.urls')),
     path('api/seekers/', include('seekers.urls')),
     path('api/companies/', include('companies.urls')),
     path('api/vacancies/', include('vacancies.urls')),
     path('api/follows/', include('follows.urls')),
-    path('home/', home_view, name='home'),
-    # path('api/analytics/', include('analytics.urls')),
+    path('api/analytics/', include('analytics.urls')),
 
-    ### Swagge
+    # Home page
+    path('home/', home_view, name='home'),
+
+    # OpenAPI Schema and Documentation
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),  # Generates the OpenAPI schema
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),  # Swagger UI
+    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),  # Redoc UI
+
+    # If you want to redirect root to Swagger UI (optional)
+    path('', RedirectView.as_view(pattern_name='swagger-ui', permanent=False)),
 ]
-urlpatterns += [
-    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
-    path(
-        "api/docs/swagger/",
-        SpectacularSwaggerView.as_view(url_name="schema"),
-        name="swagger-ui",
-    ),
-    path(
-        "api/docs/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"
-    ),
-    path("", RedirectView.as_view(url="api/docs/swagger/")),
-]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

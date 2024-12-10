@@ -97,7 +97,7 @@ DATABASES = {
     }
 }
 MEDIA_URL = '/resumes/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'resumes')
+MEDIA_ROOT = os.path.join(BASE_DIR, '')
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -196,12 +196,22 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
 
+
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Auth And GateWay API',
-    'DESCRIPTION': '',
+    'TITLE': 'Your Project API',
+    'DESCRIPTION': 'API documentation for your project',
     'VERSION': '1.0.0',
+    # Include schema in served endpoints if you want
     'SERVE_INCLUDE_SCHEMA': False,
-    'DISABLE_ERRORS_AND_WARNINGS': True,
+    'SORT_OPERATIONS': False,
+    # Custom Swagger UI or Redoc settings can go here
+    'SWAGGER_UI_SETTINGS': {
+        'deepLinking': True,
+        'persistAuthorization': True,
+    },
+    'REDOC_SETTINGS': {
+        'hide_loading': True,
+    },
 }
 
 

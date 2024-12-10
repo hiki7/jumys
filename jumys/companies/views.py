@@ -21,7 +21,7 @@ from .forms import CompanyForm, AddManagerForm
 from .utils import get_location_from_nominatim
 from users.models import CustomUser
 from rest_framework.permissions import IsAuthenticated
-
+from django.db.models import Q
 # Renders
 
 @method_decorator(login_required, name='dispatch')
@@ -138,5 +138,16 @@ class AddManagerView(View):
             messages.success(request, "Manager(s) added successfully!")
             return redirect('company_detail', pk=company.pk)
         else:
-            messages.error(request, "There was an error adding manager(s). Please try again.")
+            # messages.error(request, "There was an error adding manager(s). Please try again.")
             return render(request, 'companies/add_manager.html', {'form': form, 'company': company})
+
+class CompanyListView(LoginRequiredMixin, View):
+    def get(self, request):
+        user = request.user
+        companies = Company.objects.filter(
+            Q(head_manager=user) | Q(managers=user)
+        ).distinct()
+
+        return render(request, 'companies/company_list.html', {
+            'companies': companies
+        })

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}My Companies{% endblock title %}
+
+{% block content %}
+<h1>My Companies</h1>
+{% if companies %}
+    <ul>
+        {% for company in companies %}
+            <li>
+                <a href="{% url 'company_detail' company.pk %}">{{ company.name }}</a><br>
+                {{ company.company_description }}<br>
+                Location: {{ company.location }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>You are not managing or head-managing any companies at the moment.</p>
+{% endif %}
+{% endblock %}

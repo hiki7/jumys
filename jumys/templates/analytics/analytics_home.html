@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Analytics Home{% endblock %}
+{% block content %}
+<h1>Analytics Dashboard</h1>
+<ul>
+    <li><a href="{% url 'user_role_distribution' %}">User Role Distribution</a></li>
+    <li><a href="{% url 'user_login_activity' %}">User Login Activity</a></li>
+    <li><a href="{% url 'applications_per_vacancy' %}">Applications per Vacancy</a></li>
+    <li><a href="{% url 'abilities_distribution' %}">Abilities Distribution</a></li>
+    <li><a href="{% url 'vacancies_per_day' %}">Vacancies Per Day Distribution</a></li>
+</ul>
+{% endblock %}

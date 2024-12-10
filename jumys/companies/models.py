@@ -8,14 +8,15 @@ class Country(models.Model):
         return self.name
 
 class City(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, db_index=True)  # Index for fast lookups
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.name
 
 class Street(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, db_index=True)
 
     def __str__(self):
         return self.name
@@ -33,7 +34,7 @@ class Location(models.Model):
 
 
 class Company(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, db_index=True)
     company_description = models.TextField()
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     head_manager = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='companies_headed', null=True, blank=True)

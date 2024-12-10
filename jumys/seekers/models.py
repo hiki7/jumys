@@ -24,8 +24,8 @@ class Ability(models.Model):
         return f"{self.technology} - {self.proficiency_level} ({self.experience_years} years)"
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
-    phone = models.CharField(max_length=15, blank=True, null=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile', db_index=True)
+    phone = models.CharField(max_length=15, blank=True, null=True, db_index=True)
     links = models.TextField(blank=True, null=True)
     resume = models.FileField(upload_to='resumes/', blank=True, null=True)
     abilities = models.ManyToManyField(Ability, blank=True, related_name='users')
@@ -52,7 +52,7 @@ class WorkExperience(models.Model):
         ordering = ['-start_date']
 
 class Application(models.Model):
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='applications')
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='applications', db_index=True)
     vacancy = models.ForeignKey(Vacancy, on_delete=models.CASCADE)
     applied_on = models.DateTimeField(default=timezone.now)
     reviewed = models.BooleanField(default=False)
