@@ -526,3 +526,5 @@ INFO 2024-12-11 01:22:32,903 autoreload Watching for file changes with StatReloa
 INFO 2024-12-11 01:22:34,574 basehttp "POST /api/companies/6/add_manager/ HTTP/1.1" 200 5681
 INFO 2024-12-11 01:22:39,514 basehttp "GET /api/companies/list/ HTTP/1.1" 200 4846
 INFO 2024-12-11 01:22:43,619 basehttp "GET /home/ HTTP/1.1" 200 4707
+INFO 2024-12-11 01:23:58,041 autoreload Watching for file changes with StatReloader
+INFO 2024-12-11 01:23:59,656 basehttp "GET /api/vacancies/list/ HTTP/1.1" 200 4897

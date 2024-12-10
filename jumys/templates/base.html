@@ -106,10 +106,6 @@
               </li>
             {% endif %}
           </ul>
-          <form class="d-flex" role="search" action="{% url 'home' %}" method="get">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
-            <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
-          </form>
         </div>
         {% if user.is_authenticated %}
           <span class="navbar-text text-light d-none d-md-inline">
